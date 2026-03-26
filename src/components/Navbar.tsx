@@ -39,7 +39,7 @@ export function Navbar() {
         }`}>
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center">
-              <span className="font-bagel text-foreground text-xl tracking-wider">STUDIFY</span>
+              <span className="font-bagel text-foreground text-xl tracking-wider">COSMIC CAMPUS</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">

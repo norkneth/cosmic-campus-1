@@ -36,7 +36,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-8 mt-16">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-background/70 mb-4 md:mb-0">© 2025 Studify. All rights reserved.</div>
+            <div className="text-sm text-background/70 mb-4 md:mb-0">© 2025 Cosmic Campus. All rights reserved.</div>
             <div className="text-sm text-background/70">Built for students, by students.</div>
           </div>
         </div>

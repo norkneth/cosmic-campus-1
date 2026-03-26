@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-12 gap-12">
           <div className="col-span-12 md:col-span-4">
-            <div className="font-bagel text-background text-3xl tracking-wider mb-4">STUDIFY</div>
+            <div className="font-bagel text-background text-3xl tracking-wider mb-4">COSMIC CAMPUS</div>
             <p className="text-background/70 leading-relaxed mb-6">
               A smarter way to explore your entire syllabus. Browse, learn, and track your academic progress.
             </p>
@@ -36,7 +36,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-8 mt-16">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-background/70 mb-4 md:mb-0">© 2025 Studify. All rights reserved.</div>
+            <div className="text-sm text-background/70 mb-4 md:mb-0">© 2025 Cosmic Campus. All rights reserved.</div>
             <div className="text-sm text-background/70">Built for students, by students.</div>
           </div>
         </div>

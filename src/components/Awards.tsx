@@ -4,11 +4,11 @@ import { GraduationCap, Users, BookOpen, Award, Globe, TrendingUp } from 'lucide
 
 export function Awards() {
   const stats = [
-    { icon: GraduationCap, value: '50,000+', label: 'Students Enrolled', color: 'accent-blue' },
+    { icon: GraduationCap, value: '5,000+', label: 'Students Enrolled', color: 'accent-blue' },
     { icon: BookOpen, value: '1,200+', label: 'Topics Covered', color: 'accent-emerald' },
     { icon: Users, value: '500+', label: 'Expert Educators', color: 'accent-purple' },
-    { icon: Award, value: '98%', label: 'Student Satisfaction', color: 'accent-blue' },
-    { icon: Globe, value: '120+', label: 'Universities Connected', color: 'accent-emerald' },
+    { icon: Award, value: '69%', label: 'Student Satisfaction', color: 'accent-blue' },
+    { icon: Globe, value: 'All IPU', label: 'University Connected', color: 'accent-emerald' },
     { icon: TrendingUp, value: '4.9/5', label: 'Average Rating', color: 'accent-purple' },
   ]
 

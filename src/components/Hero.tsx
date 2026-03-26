@@ -63,7 +63,7 @@ export function Hero() {
         <div className={`w-full px-6 sm:px-8 lg:px-12 py-4 transition-all duration-300 ease-out ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'}`}>
           <div className="flex items-center justify-between">
             <motion.div whileHover={{ scale: 1.05 }} className="flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <span className="font-bagel text-white text-xl tracking-wider">STUDIFY</span>
+              <span className="font-bagel text-white text-xl tracking-wider">COSMIC CAMPUS</span>
             </motion.div>
 
             <div className="hidden md:flex items-center space-x-8">

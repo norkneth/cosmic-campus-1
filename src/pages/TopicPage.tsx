@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { PageLayout } from '../components/PageLayout'
 import { findTopic } from '../data/mockData'
-import { ChevronLeft, ChevronRight, CheckCircle, BookOpen, Download, StickyNote } from 'lucide-react'
+import { ChevronLeft, ChevronRight, CheckCircle, BookOpen, Download, StickyNote, FileQuestion } from 'lucide-react'
 
 export default function TopicPage() {
   const { topicId } = useParams()
@@ -96,6 +96,19 @@ export default function TopicPage() {
                 {['Lecture Notes.pdf', 'Practice Problems.pdf', 'Reference Material.pdf'].map(file => (
                   <button key={file} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground w-full text-left gentle-animation cursor-pointer">
                     <Download className="w-4 h-4 shrink-0" />
+                    <span>{file}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* PYQs Section */}
+            <div className="bg-card clean-border rounded-xl p-6">
+              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2"><FileQuestion className="w-4 h-4" /> Previous Year Questions</h3>
+              <div className="space-y-3">
+                {['PYQ 2023.pdf', 'PYQ 2022.pdf', 'PYQ 2021.pdf', 'PYQ 2020.pdf', 'PYQ 2019.pdf'].map(file => (
+                  <button key={file} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground w-full text-left gentle-animation cursor-pointer">
+                    <FileQuestion className="w-4 h-4 shrink-0" />
                     <span>{file}</span>
                   </button>
                 ))}

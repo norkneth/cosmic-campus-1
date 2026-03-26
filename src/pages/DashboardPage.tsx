@@ -5,9 +5,6 @@ import { BookOpen, Flame, Clock, TrendingUp } from 'lucide-react'
 
 export default function DashboardPage() {
   const totalTopics = branches.reduce((a, b) => a + b.semesters.reduce((a2, s) => a2 + s.subjects.reduce((a3, sub) => a3 + sub.units.reduce((a4, u) => a4 + u.topics.length, 0), 0), 0), 0)
-  const completedTopics = branches.reduce((a, b) => a + b.semesters.reduce((a2, s) => a2 + s.subjects.reduce((a3, sub) => a3 + sub.units.reduce((a4, u) => a4 + u.topics.filter(t => t.completed).length, 0), 0), 0), 0)
-
-  const recentTopics = branches.flatMap(b => b.semesters.flatMap(s => s.subjects.flatMap(sub => sub.units.flatMap(u => u.topics.filter(t => t.completed).map(t => ({ ...t, subjectName: sub.name, branchName: b.name })))))).slice(0, 5)
 
   return (
     <PageLayout>
@@ -18,10 +15,10 @@ export default function DashboardPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {[
-            { icon: BookOpen, label: 'Topics Completed', value: completedTopics, color: 'accent-blue' },
-            { icon: TrendingUp, label: 'Overall Progress', value: `${Math.round((completedTopics / totalTopics) * 100)}%`, color: 'accent-emerald' },
-            { icon: Flame, label: 'Study Streak', value: '7 days', color: 'accent-purple' },
-            { icon: Clock, label: 'Time Spent', value: '42h', color: 'accent-blue' },
+            { icon: BookOpen, label: 'Topics Completed', value: '0', color: 'accent-blue' },
+            { icon: TrendingUp, label: 'Overall Progress', value: '0%', color: 'accent-emerald' },
+            { icon: Flame, label: 'Study Streak', value: '0 days', color: 'accent-purple' },
+            { icon: Clock, label: 'Time Spent', value: '0h', color: 'accent-blue' },
           ].map(stat => (
             <div key={stat.label} className="bg-card clean-border rounded-2xl p-6 gentle-animation hover:elevated-shadow">
               <stat.icon className={`w-8 h-8 mb-4`} style={{ color: `var(--${stat.color})` }} />
@@ -42,27 +39,22 @@ export default function DashboardPage() {
                 <h3 className="font-bold text-foreground mb-1">{sub.name}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{branch.name}</p>
                 <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-accent-emerald rounded-full" style={{ width: '35%' }} />
+                  <div className="h-full bg-accent-emerald rounded-full" style={{ width: '0%' }} />
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">35% completed</p>
+                <p className="text-xs text-muted-foreground mt-2">Not started yet</p>
               </Link>
             )
           })}
         </div>
 
-        {/* Recent Activity */}
+        {/* Recently Completed - Empty State */}
         <h2 className="text-2xl font-bold text-foreground mb-6">Recently Completed</h2>
-        <div className="space-y-3 max-w-3xl">
-          {recentTopics.map(topic => (
-            <Link key={topic.id} to={`/topic/${topic.id}`} className="flex items-center gap-4 bg-card clean-border rounded-xl p-4 gentle-animation hover:bg-muted/50">
-              <div className="w-3 h-3 rounded-full bg-accent-emerald shrink-0" />
-              <div className="flex-1 min-w-0">
-                <p className="text-foreground font-medium truncate">{topic.title}</p>
-                <p className="text-xs text-muted-foreground">{topic.subjectName} • {topic.branchName}</p>
-              </div>
-              <span className="text-xs text-muted-foreground shrink-0">{topic.duration}</span>
-            </Link>
-          ))}
+        <div className="bg-card clean-border rounded-xl p-8 text-center max-w-3xl">
+          <BookOpen className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+          <p className="text-muted-foreground">No topics completed yet. Start learning to track your progress!</p>
+          <Link to="/branches" className="inline-block mt-4 text-accent-blue hover:underline text-sm font-medium">
+            Explore Branches →
+          </Link>
         </div>
       </div>
     </PageLayout>

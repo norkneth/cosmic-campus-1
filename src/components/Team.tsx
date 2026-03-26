@@ -2,10 +2,10 @@
 
 export function Team() {
   const educators = [
-    { name: "focneth", role: "Lead Developer", bio: "Full-stack architect with expertise in modern web technologies and system design.", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop&crop=face", rotation: 'rotate-3' },
-    { name: "nam.neth", role: "Backend Specialist", bio: "Database wizard and API designer. Builds scalable infrastructure that powers everything.", image: "https://images.unsplash.com/photo-1599566150163-29194dcabd9c?w=400&h=400&fit=crop&crop=face", rotation: 'rotate-2' },
-    { name: "vel.neth", role: "UI/UX Designer", bio: "Crafts beautiful, intuitive interfaces. Turns complex problems into simple, elegant solutions.", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=400&h=400&fit=crop&crop=face", rotation: '-rotate-2' },
-    { name: "hike.neth", role: "Content Strategist", bio: "Curates and structures academic content. Ensures every topic is clear, concise, and engaging.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face", rotation: 'rotate-1' },
+    { name: "focneth", role: "Founder", bio: "Visionary leader behind Cosmic Campus. Architecting the future of digital education.", rotation: 'rotate-3' },
+    { name: "nam.neth", role: "Co-Founder & CEO", bio: "Driving strategy, growth, and partnerships. Building bridges between technology and learning.", rotation: 'rotate-2' },
+    { name: "vel.neth", role: "Chief Executive Officer", bio: "Overseeing operations and ensuring every student gets a world-class learning experience.", rotation: '-rotate-2' },
+    { name: "hike.neth", role: "Chief Technology Officer & Content Strategist", bio: "Leading tech innovation and curating structured academic content for maximum impact.", rotation: 'rotate-1' },
   ]
 
   return (
@@ -31,9 +31,10 @@ export function Team() {
             {educators.map((educator) => (
               <div key={educator.name} className={`group transform ${educator.rotation} hover:rotate-0 transition-all duration-500 hover:scale-105 hover:z-20`} style={{ filter: 'drop-shadow(4px 4px 8px rgba(0,0,0,0.15))', overflow: 'visible', height: 'auto' }}>
                 <div className="bg-card clean-border rounded-2xl overflow-hidden elevated-shadow" style={{ overflow: 'visible', height: 'auto' }}>
-                  <div className="relative w-full h-48 overflow-hidden">
-                    <img src={educator.image} alt={educator.name} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                  <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-accent-blue/20 via-accent-purple/20 to-accent-emerald/20 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center text-3xl font-black text-foreground">
+                      {educator.name.charAt(0).toUpperCase()}
+                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-lg font-black text-foreground mb-1">{educator.name}</h3>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Volume2, VolumeX, Menu, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 export function Hero() {
   const [isMuted, setIsMuted] = useState(true)
@@ -78,7 +79,8 @@ export function Hero() {
               ))}
             </div>
 
-            <div className="flex items-center space-x-3 relative">
+            <div className="flex items-center space-x-2 sm:space-x-3 relative">
+              <ThemeSwitcher />
               <div className="relative">
                 <button onClick={() => setIsMuted(!isMuted)} className="glass-effect p-3 rounded-full text-white hover:bg-white/20 gentle-animation cursor-pointer">
                   {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}

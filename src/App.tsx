@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
+import { useState, useCallback } from 'react'
 import { Hero } from './components/Hero'
 import { Portfolio } from './components/Portfolio'
 import { Awards } from './components/Awards'
@@ -7,6 +9,9 @@ import { Services } from './components/Services'
 import { Team } from './components/Team'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
+import { SplashScreen } from './components/SplashScreen'
+import { StudentTypeSelector } from './components/StudentTypeSelector'
+import { PageTransition } from './components/PageTransition'
 import BranchesPage from './pages/BranchesPage'
 import BranchPage from './pages/BranchPage'
 import SemesterPage from './pages/SemesterPage'
@@ -15,6 +20,9 @@ import UnitPage from './pages/UnitPage'
 import TopicPage from './pages/TopicPage'
 import DashboardPage from './pages/DashboardPage'
 import SearchPage from './pages/SearchPage'
+import CGPACalculator from './pages/CGPACalculator'
+import SGPACalculator from './pages/SGPACalculator'
+import BunkCalculator from './pages/BunkCalculator'
 
 function HomePage() {
   return (
@@ -47,20 +55,54 @@ function HomePage() {
   )
 }
 
+function AnimatedRoutes() {
+  const location = useLocation()
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
+        <Route path="/branches" element={<PageTransition><BranchesPage /></PageTransition>} />
+        <Route path="/branch/:branchId" element={<PageTransition><BranchPage /></PageTransition>} />
+        <Route path="/semester/:semesterId" element={<PageTransition><SemesterPage /></PageTransition>} />
+        <Route path="/subject/:subjectId" element={<PageTransition><SubjectPage /></PageTransition>} />
+        <Route path="/unit/:unitId" element={<PageTransition><UnitPage /></PageTransition>} />
+        <Route path="/topic/:topicId" element={<PageTransition><TopicPage /></PageTransition>} />
+        <Route path="/dashboard" element={<PageTransition><DashboardPage /></PageTransition>} />
+        <Route path="/search" element={<PageTransition><SearchPage /></PageTransition>} />
+        <Route path="/cgpa-calculator" element={<PageTransition><CGPACalculator /></PageTransition>} />
+        <Route path="/sgpa-calculator" element={<PageTransition><SGPACalculator /></PageTransition>} />
+        <Route path="/bunk-calculator" element={<PageTransition><BunkCalculator /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  )
+}
+
 export default function App() {
+  const hasSeenSplash = sessionStorage.getItem('cc-splash-seen') === 'true'
+  const hasSelectedType = !!localStorage.getItem('cc-student-type')
+
+  const [showSplash, setShowSplash] = useState(!hasSeenSplash)
+  const [showTypeSelector, setShowTypeSelector] = useState(false)
+
+  const handleSplashComplete = useCallback(() => {
+    sessionStorage.setItem('cc-splash-seen', 'true')
+    setShowSplash(false)
+    if (!hasSelectedType) {
+      setShowTypeSelector(true)
+    }
+  }, [hasSelectedType])
+
+  const handleTypeSelected = useCallback(() => {
+    setShowTypeSelector(false)
+  }, [])
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/branches" element={<BranchesPage />} />
-        <Route path="/branch/:branchId" element={<BranchPage />} />
-        <Route path="/semester/:semesterId" element={<SemesterPage />} />
-        <Route path="/subject/:subjectId" element={<SubjectPage />} />
-        <Route path="/unit/:unitId" element={<UnitPage />} />
-        <Route path="/topic/:topicId" element={<TopicPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/search" element={<SearchPage />} />
-      </Routes>
+      <AnimatePresence>
+        {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+        {showTypeSelector && <StudentTypeSelector onSelect={handleTypeSelected} />}
+      </AnimatePresence>
+      {!showSplash && !showTypeSelector && <AnimatedRoutes />}
     </BrowserRouter>
   )
 }

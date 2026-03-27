@@ -61,6 +61,33 @@
   --ring: #4f5b8a;
 }
 
+.light {
+  --background: #f0f5f0;
+  --foreground: #1a2e1a;
+  --card: #e8f0e8;
+  --card-foreground: #1a2e1a;
+  --popover: #e8f0e8;
+  --popover-foreground: #1a2e1a;
+  --primary: #1a2e1a;
+  --primary-foreground: #f0f5f0;
+  --secondary: #d4e4d4;
+  --secondary-foreground: #1a2e1a;
+  --muted: #d4e4d4;
+  --muted-foreground: #4a6b4a;
+  --accent: #d4e4d4;
+  --accent-foreground: #1a2e1a;
+  --destructive: #dc2626;
+  --destructive-foreground: #f0f5f0;
+  --border: #b8d4b8;
+  --input: #d4e4d4;
+  --input-background: #e8f0e8;
+  --switch-background: #b8d4b8;
+  --ring: #6b8f6b;
+  --accent-blue: #2d7a4f;
+  --accent-emerald: #1d6b45;
+  --accent-purple: #5a7a3d;
+}
+
 
 @theme inline {
   --color-background: var(--background);
@@ -148,6 +175,12 @@
     box-shadow: 
       0 8px 32px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .light .glass-effect {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   }
   
   .glass-effect:hover {

@@ -25,9 +25,6 @@ export function Navbar() {
     { label: 'Branches', to: '/branches' },
     { label: 'Dashboard', to: '/dashboard' },
     { label: 'Search', to: '/search' },
-    { label: 'CGPA', to: '/cgpa-calculator' },
-    { label: 'SGPA', to: '/sgpa-calculator' },
-    { label: 'Bunk', to: '/bunk-calculator' },
   ]
 
   return (

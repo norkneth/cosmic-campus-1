@@ -912,7 +912,1285 @@ const civilBranch: Branch = {
   ],
 };
 
-export const branches: Branch[] = [csBranch, itBranch, mechBranch, eeBranch, civilBranch];
+// ===================== ECE BRANCH (IPU) =====================
+const eceBranch: Branch = {
+  id: 'ece',
+  name: 'Electronics & Communication Engineering',
+  description: 'Master electronics, communication systems, VLSI, signal processing & embedded systems.',
+  image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop',
+  color: 'blue',
+  semesters: [
+    { id: 'ece-sem-1', number: 1, subjects: sem1Subjects('ece') },
+    { id: 'ece-sem-2', number: 2, subjects: sem2Subjects('ece') },
+    { id: 'ece-sem-3', number: 3, subjects: [
+      makeSubject('ece-s3-1', 'Applied Mathematics – III', '📐', [
+        { title: 'Unit 1: Complex Variables', topics: ['Analytic Functions', 'Cauchy-Riemann Equations', 'Complex Integration', 'Residue Theorem', 'Taylor & Laurent Series', 'Conformal Mapping'] },
+        { title: 'Unit 2: Probability & Statistics', topics: ['Random Variables', 'Probability Distributions', 'Normal Distribution', 'Hypothesis Testing', 'Regression & Correlation', 'Curve Fitting'] },
+        { title: 'Unit 3: Transform Techniques', topics: ['Z-Transform', 'Inverse Z-Transform', 'Fourier Transform', 'Discrete Fourier Transform', 'Properties & Applications', 'Difference Equations'] },
+      ]),
+      makeSubject('ece-s3-2', 'Network Analysis & Synthesis', '🔌', [
+        { title: 'Unit 1: Network Analysis', topics: ['Network Topology', 'Graph Theory for Networks', 'Mesh & Nodal Analysis', 'Network Theorems', 'Transient & Steady State Analysis', 'Two-Port Networks'] },
+        { title: 'Unit 2: Network Synthesis', topics: ['Driving Point & Transfer Functions', 'Positive Real Functions', 'LC, RC, RL Network Synthesis', 'Foster & Cauer Forms', 'Filter Design Basics', 'Active Network Synthesis'] },
+      ]),
+      makeSubject('ece-s3-3', 'Electronic Devices & Circuits', '📡', [
+        { title: 'Unit 1: Semiconductor Devices', topics: ['Energy Bands in Solids', 'p-n Junction Diode', 'Zener Diode', 'BJT - Characteristics & Biasing', 'FET & MOSFET', 'Power Devices - SCR, DIAC, TRIAC'] },
+        { title: 'Unit 2: Amplifier Circuits', topics: ['Small Signal Amplifiers', 'Frequency Response', 'Multistage Amplifiers', 'Power Amplifiers - Class A, B, AB, C', 'Feedback Amplifiers', 'Oscillators'] },
+      ]),
+      makeSubject('ece-s3-4', 'Digital Electronics', '🔧', [
+        { title: 'Unit 1: Combinational Circuits', topics: ['Boolean Algebra & K-Maps', 'Adders & Subtractors', 'Multiplexers & Demultiplexers', 'Decoders & Encoders', 'Comparators', 'Code Converters'] },
+        { title: 'Unit 2: Sequential Circuits', topics: ['Flip-Flops - SR, JK, D, T', 'Counters - Ripple & Synchronous', 'Shift Registers', 'State Machine Design', 'Memory Devices - ROM, RAM', 'PLDs - PLA, PAL, FPGA'] },
+      ]),
+      makeSubject('ece-s3-5', 'Signals & Systems', '📊', [
+        { title: 'Unit 1: Continuous-Time Signals', topics: ['Signal Classification', 'LTI Systems', 'Convolution Integral', 'Fourier Series & Transform', 'Laplace Transform', 'System Transfer Function'] },
+        { title: 'Unit 2: Discrete-Time Signals', topics: ['Discrete Signals & Systems', 'Z-Transform', 'Discrete Fourier Transform', 'FFT Algorithm', 'Sampling Theorem', 'Digital Filter Basics'] },
+      ]),
+      makeSubject('ece-s3-6', 'Electromagnetic Field Theory', '⚡', [
+        { title: 'Unit 1: Electrostatics & Magnetostatics', topics: ['Coulomb\'s Law & Field Intensity', 'Gauss\'s Law', 'Electric Potential', 'Biot-Savart Law', 'Ampere\'s Law', 'Boundary Conditions'] },
+        { title: 'Unit 2: Time-Varying Fields', topics: ['Faraday\'s Law', 'Displacement Current', 'Maxwell\'s Equations', 'EM Wave Propagation', 'Poynting Vector', 'Transmission Lines'] },
+      ]),
+    ]},
+    { id: 'ece-sem-4', number: 4, subjects: [
+      makeSubject('ece-s4-1', 'Analog Communication', '📡', [
+        { title: 'Unit 1: AM Systems', topics: ['Amplitude Modulation', 'DSB-SC, SSB-SC', 'AM Transmitters & Receivers', 'Superheterodyne Receiver', 'Noise in AM Systems', 'FDM'] },
+        { title: 'Unit 2: FM Systems', topics: ['Frequency Modulation', 'Narrowband & Wideband FM', 'FM Generation & Detection', 'Phase Locked Loop', 'FM Stereo Broadcasting', 'Noise in FM'] },
+      ]),
+      makeSubject('ece-s4-2', 'Control Systems', '⚙️', [
+        { title: 'Unit 1: Time Domain Analysis', topics: ['Open & Closed Loop Systems', 'Transfer Functions', 'Block Diagram Reduction', 'Signal Flow Graphs', 'Time Response Analysis', 'Stability - Routh-Hurwitz'] },
+        { title: 'Unit 2: Frequency Domain Analysis', topics: ['Root Locus Technique', 'Bode Plot', 'Nyquist Plot', 'Gain & Phase Margin', 'Compensator Design', 'State Space Analysis'] },
+      ]),
+      makeSubject('ece-s4-3', 'Microprocessors & Microcontrollers', '🔧', [
+        { title: 'Unit 1: 8085 & 8086', topics: ['8085 Architecture', '8085 Programming', '8086 Architecture', '8086 Instruction Set', 'Memory Interfacing', 'I/O Interfacing'] },
+        { title: 'Unit 2: Microcontrollers', topics: ['8051 Architecture', '8051 Programming', 'Timer/Counter', 'Serial Communication', 'Interrupts', 'Embedded C'] },
+      ]),
+      makeSubject('ece-s4-4', 'Integrated Circuits', '🔌', [
+        { title: 'Unit 1: Linear ICs', topics: ['Op-Amp Characteristics', 'Inverting & Non-Inverting', 'Summing Amplifier', 'Differentiator & Integrator', 'Active Filters', 'Voltage Regulators - 78xx, LM317'] },
+        { title: 'Unit 2: Digital ICs', topics: ['TTL & CMOS Logic Families', 'Interfacing TTL & CMOS', '555 Timer Applications', 'PLL Applications', 'D/A & A/D Converters', 'Sample & Hold Circuits'] },
+      ]),
+      makeSubject('ece-s4-5', 'Computer Architecture & Organization', '🖥️', [
+        { title: 'Unit 1: CPU Design', topics: ['Instruction Set Architecture', 'Addressing Modes', 'ALU Design', 'Control Unit Design', 'Pipelining', 'Pipeline Hazards'] },
+        { title: 'Unit 2: Memory & I/O', topics: ['Cache Memory', 'Virtual Memory', 'Memory Interleaving', 'DMA', 'I/O Organization', 'Multiprocessor Basics'] },
+      ]),
+      makeSubject('ece-s4-6', 'Engineering Economics', '📊', defaultUnits('engg-eco')),
+    ]},
+    { id: 'ece-sem-5', number: 5, subjects: [
+      makeSubject('ece-s5-1', 'Digital Communication', '📡', [
+        { title: 'Unit 1: Source Coding', topics: ['Sampling & Quantization', 'PCM, DPCM, DM', 'Information Theory', 'Shannon\'s Theorems', 'Source Coding - Huffman', 'Channel Capacity'] },
+        { title: 'Unit 2: Digital Modulation', topics: ['ASK, FSK, PSK', 'QPSK & QAM', 'OFDM Basics', 'Spread Spectrum - DSSS, FHSS', 'Error Detection & Correction', 'Convolutional Codes'] },
+      ]),
+      makeSubject('ece-s5-2', 'Digital Signal Processing', '📊', [
+        { title: 'Unit 1: DFT & FFT', topics: ['Discrete Fourier Transform', 'FFT Algorithms', 'Linear & Circular Convolution', 'Correlation', 'Power Spectral Density', 'Windowing Techniques'] },
+        { title: 'Unit 2: Digital Filters', topics: ['FIR Filter Design', 'IIR Filter Design', 'Butterworth & Chebyshev', 'Filter Structures', 'Multirate Signal Processing', 'DSP Applications'] },
+      ]),
+      makeSubject('ece-s5-3', 'VLSI Design', '🔧', [
+        { title: 'Unit 1: MOS Circuits', topics: ['CMOS Technology', 'NMOS & PMOS Transistors', 'CMOS Inverter', 'CMOS Logic Gates', 'Stick Diagrams & Layout', 'Design Rules'] },
+        { title: 'Unit 2: VLSI Design Flow', topics: ['RTL Design', 'Logic Synthesis', 'Timing Analysis', 'Floor Planning & Routing', 'Verification & Testing', 'FPGA vs ASIC'] },
+      ]),
+      makeSubject('ece-s5-4', 'Antenna & Wave Propagation', '📡', [
+        { title: 'Unit 1: Antenna Fundamentals', topics: ['Antenna Parameters', 'Radiation Pattern', 'Dipole Antenna', 'Loop Antenna', 'Array Antennas', 'Yagi-Uda Antenna'] },
+        { title: 'Unit 2: Wave Propagation', topics: ['Ground Wave Propagation', 'Sky Wave Propagation', 'Space Wave Propagation', 'Microwave Propagation', 'Satellite Communication Basics', 'Radar Fundamentals'] },
+      ]),
+      makeSubject('ece-s5-5', 'Computer Networks', '🌐', [
+        { title: 'Unit 1: Network Fundamentals', topics: ['OSI & TCP/IP Models', 'Physical Layer', 'Data Link Layer', 'MAC Protocols', 'Network Layer - IP', 'Routing Algorithms'] },
+        { title: 'Unit 2: Transport & Application', topics: ['TCP & UDP', 'Congestion Control', 'DNS & HTTP', 'Network Security Basics', 'Wireless Networks', 'IoT Protocols'] },
+      ]),
+      makeSubject('ece-s5-6', 'Communication Lab', '🧪', defaultUnits('comm-lab')),
+    ]},
+    { id: 'ece-sem-6', number: 6, subjects: [
+      makeSubject('ece-s6-1', 'Wireless & Mobile Communication', '📱', [
+        { title: 'Unit 1: Cellular Concepts', topics: ['Cellular Architecture', 'Frequency Reuse', 'Channel Assignment', 'Handoff Strategies', 'GSM Architecture', 'CDMA Technology'] },
+        { title: 'Unit 2: Modern Wireless', topics: ['3G & 4G Technologies', '5G NR Architecture', 'MIMO Systems', 'OFDMA', 'Wi-Fi Standards', 'Bluetooth & Zigbee'] },
+      ]),
+      makeSubject('ece-s6-2', 'Microwave Engineering', '📡', [
+        { title: 'Unit 1: Microwave Components', topics: ['Waveguides', 'Microwave Junctions', 'Directional Couplers', 'Circulators & Isolators', 'Microwave Filters', 'Microstrip Lines'] },
+        { title: 'Unit 2: Microwave Devices', topics: ['Klystron', 'Magnetron', 'TWT', 'Gunn Diode', 'IMPATT Diode', 'Microwave Measurements'] },
+      ]),
+      makeSubject('ece-s6-3', 'Embedded Systems', '🔧', [
+        { title: 'Unit 1: Embedded Basics', topics: ['Embedded System Architecture', 'ARM Processor', 'Memory Types', 'Peripheral Interfacing', 'RTOS Concepts', 'Task Scheduling'] },
+        { title: 'Unit 2: Embedded Programming', topics: ['Embedded C Programming', 'Device Drivers', 'Communication Protocols - SPI, I2C, UART', 'Sensor Interfacing', 'IoT Applications', 'Embedded Linux Basics'] },
+      ]),
+      makeSubject('ece-s6-4', 'Information Theory & Coding', '🔢', [
+        { title: 'Unit 1: Information Theory', topics: ['Entropy', 'Mutual Information', 'Channel Capacity', 'Shannon\'s Theorems', 'Rate Distortion Theory', 'Source Coding'] },
+        { title: 'Unit 2: Error Correcting Codes', topics: ['Linear Block Codes', 'Hamming Codes', 'Cyclic Codes', 'BCH Codes', 'Reed-Solomon Codes', 'Turbo & LDPC Codes'] },
+      ]),
+      makeSubject('ece-s6-5', 'Optical Communication', '💡', [
+        { title: 'Unit 1: Optical Fibers', topics: ['Optical Fiber Types', 'Light Propagation in Fibers', 'Attenuation & Dispersion', 'Optical Sources - LED, Laser', 'Optical Detectors', 'Fiber Optic Link Design'] },
+        { title: 'Unit 2: Optical Networks', topics: ['WDM Systems', 'Optical Amplifiers - EDFA', 'SONET/SDH', 'Optical Switching', 'FTTH Architecture', 'Free Space Optics'] },
+      ]),
+    ]},
+    { id: 'ece-sem-7', number: 7, subjects: [
+      makeSubject('ece-s7-1', 'Satellite Communication', '🛰️', [
+        { title: 'Unit 1: Satellite Systems', topics: ['Orbital Mechanics', 'Satellite Subsystems', 'Link Budget Analysis', 'Multiple Access - FDMA, TDMA, CDMA', 'VSAT Systems', 'GPS'] },
+        { title: 'Unit 2: Earth Station & Applications', topics: ['Earth Station Technology', 'Satellite TV Broadcasting', 'Satellite Internet', 'Remote Sensing', 'Military Applications', 'Future Trends'] },
+      ]),
+      makeSubject('ece-s7-2', 'Digital Image Processing', '🖼️', [
+        { title: 'Unit 1: Image Processing', topics: ['Image Fundamentals', 'Spatial Filtering', 'Frequency Domain Filtering', 'Image Enhancement', 'Image Segmentation', 'Morphological Processing'] },
+        { title: 'Unit 2: Image Compression', topics: ['Lossless Compression', 'Lossy Compression', 'JPEG Standard', 'Wavelet Transform', 'Video Compression - MPEG', 'Image Recognition'] },
+      ]),
+      makeSubject('ece-s7-3', 'Radar Engineering', '📡', [
+        { title: 'Unit 1: Radar Systems', topics: ['Radar Equation', 'Pulse Radar', 'CW Radar', 'MTI Radar', 'Doppler Radar', 'Tracking Radar'] },
+        { title: 'Unit 2: Advanced Radar', topics: ['Phased Array Radar', 'Synthetic Aperture Radar', 'Radar Signal Processing', 'Electronic Countermeasures', 'Radar Cross Section', 'Modern Radar Systems'] },
+      ]),
+      makeSubject('ece-s7-4', 'MEMS & Nanotechnology', '🔬', defaultUnits('mems')),
+      makeSubject('ece-s7-5', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'ece-sem-8', number: 8, subjects: [
+      makeSubject('ece-s8-1', 'Robotics & Automation', '🤖', defaultUnits('robotics')),
+      makeSubject('ece-s8-2', 'Advanced Communication Systems', '📡', defaultUnits('adv-comm')),
+      makeSubject('ece-s8-3', 'IoT & Cyber Physical Systems', '🌐', defaultUnits('iot')),
+      makeSubject('ece-s8-4', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== EEE BRANCH (IPU) =====================
+const eeeBranch: Branch = {
+  id: 'eee',
+  name: 'Electrical & Electronics Engineering',
+  description: 'Study power systems, electrical machines, power electronics & control with IPU syllabus.',
+  image: 'https://images.unsplash.com/photo-1509390874225-92f30bb250a4?w=600&h=400&fit=crop',
+  color: 'blue',
+  semesters: [
+    { id: 'eee-sem-1', number: 1, subjects: sem1Subjects('eee') },
+    { id: 'eee-sem-2', number: 2, subjects: sem2Subjects('eee') },
+    { id: 'eee-sem-3', number: 3, subjects: [
+      makeSubject('eee-s3-1', 'Applied Mathematics – III', '📐', defaultUnits('math3')),
+      makeSubject('eee-s3-2', 'Network Analysis', '🔌', [
+        { title: 'Unit 1: Network Theorems', topics: ['KVL & KCL', 'Mesh & Nodal Analysis', 'Thevenin & Norton', 'Superposition', 'Maximum Power Transfer', 'Star-Delta Transformation'] },
+        { title: 'Unit 2: AC Networks', topics: ['Phasor Analysis', 'Series & Parallel RLC', 'Resonance', 'Coupled Circuits', 'Two-Port Networks', 'Network Functions'] },
+      ]),
+      makeSubject('eee-s3-3', 'Analog Electronics', '📡', defaultUnits('analog')),
+      makeSubject('eee-s3-4', 'Electrical Machines – I', '⚡', [
+        { title: 'Unit 1: DC Machines', topics: ['DC Generator - Construction & Working', 'EMF Equation', 'Types of Generators', 'DC Motor - Working Principle', 'Torque Equation', 'Speed Control Methods'] },
+        { title: 'Unit 2: Transformers', topics: ['Construction & Working', 'EMF Equation', 'Equivalent Circuit', 'Voltage Regulation', 'Losses & Efficiency', 'Testing - OC & SC Tests'] },
+      ]),
+      makeSubject('eee-s3-5', 'Digital Electronics', '🔧', defaultUnits('digital')),
+      makeSubject('eee-s3-6', 'Measurements & Instrumentation', '📊', [
+        { title: 'Unit 1: Measurement Systems', topics: ['Measurement Standards', 'Error Analysis', 'PMMC Instruments', 'MI Instruments', 'Wattmeters', 'Energy Meters'] },
+        { title: 'Unit 2: Electronic Instruments', topics: ['CRO - Working & Applications', 'Digital Multimeters', 'Signal Generators', 'Transducers', 'Data Acquisition Systems', 'Virtual Instrumentation'] },
+      ]),
+    ]},
+    { id: 'eee-sem-4', number: 4, subjects: [
+      makeSubject('eee-s4-1', 'Electrical Machines – II', '⚡', [
+        { title: 'Unit 1: Induction Motors', topics: ['3-Phase Induction Motor Construction', 'Rotating Magnetic Field', 'Slip & Torque', 'Equivalent Circuit', 'Speed Control Methods', 'Starting Methods'] },
+        { title: 'Unit 2: Synchronous Machines', topics: ['Alternator Construction', 'EMF Equation', 'Voltage Regulation', 'Synchronous Motor', 'V-Curves', 'Power Angle Characteristics'] },
+      ]),
+      makeSubject('eee-s4-2', 'Control Systems', '⚙️', defaultUnits('control')),
+      makeSubject('eee-s4-3', 'Signals & Systems', '📊', defaultUnits('signals')),
+      makeSubject('eee-s4-4', 'Electromagnetic Field Theory', '⚡', defaultUnits('emf')),
+      makeSubject('eee-s4-5', 'Power Systems – I', '🔌', [
+        { title: 'Unit 1: Power Generation', topics: ['Thermal Power Plants', 'Hydroelectric Power Plants', 'Nuclear Power Plants', 'Solar & Wind Energy', 'Load Curves', 'Economics of Power Generation'] },
+        { title: 'Unit 2: Transmission & Distribution', topics: ['Transmission Line Parameters', 'Performance of Transmission Lines', 'Corona', 'Insulators', 'Underground Cables', 'Distribution Systems'] },
+      ]),
+      makeSubject('eee-s4-6', 'Microprocessors', '🔧', defaultUnits('micro')),
+    ]},
+    { id: 'eee-sem-5', number: 5, subjects: [
+      makeSubject('eee-s5-1', 'Power Electronics', '⚡', [
+        { title: 'Unit 1: Power Devices', topics: ['SCR - Construction & Operation', 'MOSFET & IGBT', 'Gate Drive Circuits', 'Snubber Circuits', 'Series & Parallel Operation', 'Protection Circuits'] },
+        { title: 'Unit 2: Converters', topics: ['AC-DC Converters', 'DC-DC Converters - Buck, Boost', 'DC-AC Inverters', 'AC-AC Converters - Cycloconverter', 'PWM Techniques', 'Applications'] },
+      ]),
+      makeSubject('eee-s5-2', 'Power Systems – II', '🔌', defaultUnits('power2')),
+      makeSubject('eee-s5-3', 'Digital Signal Processing', '📊', defaultUnits('dsp')),
+      makeSubject('eee-s5-4', 'Analog Communication', '📡', defaultUnits('analog-comm')),
+      makeSubject('eee-s5-5', 'Computer Architecture', '🖥️', defaultUnits('comp-arch')),
+    ]},
+    { id: 'eee-sem-6', number: 6, subjects: [
+      makeSubject('eee-s6-1', 'Electric Drives', '⚡', defaultUnits('drives')),
+      makeSubject('eee-s6-2', 'Digital Communication', '📡', defaultUnits('dig-comm')),
+      makeSubject('eee-s6-3', 'Switchgear & Protection', '🔌', defaultUnits('protection')),
+      makeSubject('eee-s6-4', 'VLSI Design', '🔧', defaultUnits('vlsi')),
+      makeSubject('eee-s6-5', 'Microcontrollers & Embedded Systems', '🔧', defaultUnits('embedded')),
+    ]},
+    { id: 'eee-sem-7', number: 7, subjects: [
+      makeSubject('eee-s7-1', 'Renewable Energy Systems', '🌱', defaultUnits('renewable')),
+      makeSubject('eee-s7-2', 'High Voltage Engineering', '⚡', defaultUnits('hv')),
+      makeSubject('eee-s7-3', 'Power System Analysis', '🔌', defaultUnits('psa')),
+      makeSubject('eee-s7-4', 'Industrial Automation', '🤖', defaultUnits('automation')),
+      makeSubject('eee-s7-5', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'eee-sem-8', number: 8, subjects: [
+      makeSubject('eee-s8-1', 'Smart Grid Technology', '⚡', defaultUnits('smart-grid')),
+      makeSubject('eee-s8-2', 'Power Quality', '🔌', defaultUnits('power-quality')),
+      makeSubject('eee-s8-3', 'Electric Vehicle Technology', '🚗', defaultUnits('ev')),
+      makeSubject('eee-s8-4', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== BIOTECH BRANCH (IPU) =====================
+const biotechBranch: Branch = {
+  id: 'biotech',
+  name: 'Biotechnology Engineering',
+  description: 'Explore genetic engineering, bioprocess technology, bioinformatics & molecular biology.',
+  image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop',
+  color: 'blue',
+  semesters: [
+    { id: 'biotech-sem-1', number: 1, subjects: sem1Subjects('biotech') },
+    { id: 'biotech-sem-2', number: 2, subjects: sem2Subjects('biotech') },
+    { id: 'biotech-sem-3', number: 3, subjects: [
+      makeSubject('biotech-s3-1', 'Applied Mathematics – III', '📐', defaultUnits('math3')),
+      makeSubject('biotech-s3-2', 'Biochemistry', '🧬', [
+        { title: 'Unit 1: Biomolecules', topics: ['Amino Acids & Proteins', 'Carbohydrates', 'Lipids', 'Nucleic Acids', 'Enzymes - Classification & Kinetics', 'Coenzymes & Cofactors'] },
+        { title: 'Unit 2: Metabolism', topics: ['Glycolysis', 'TCA Cycle', 'Electron Transport Chain', 'Fatty Acid Metabolism', 'Amino Acid Metabolism', 'Nucleotide Metabolism'] },
+      ]),
+      makeSubject('biotech-s3-3', 'Microbiology', '🔬', [
+        { title: 'Unit 1: General Microbiology', topics: ['Bacterial Cell Structure', 'Microbial Growth', 'Microbial Nutrition', 'Sterilization Techniques', 'Microscopy', 'Staining Techniques'] },
+        { title: 'Unit 2: Applied Microbiology', topics: ['Industrial Microbiology', 'Food Microbiology', 'Environmental Microbiology', 'Medical Microbiology', 'Microbial Genetics', 'Virology Basics'] },
+      ]),
+      makeSubject('biotech-s3-4', 'Cell Biology', '🧫', defaultUnits('cell-bio')),
+      makeSubject('biotech-s3-5', 'Thermodynamics for Biotechnologists', '🌡️', defaultUnits('thermo-bio')),
+      makeSubject('biotech-s3-6', 'Programming in C', '💻', defaultUnits('c-prog')),
+    ]},
+    { id: 'biotech-sem-4', number: 4, subjects: [
+      makeSubject('biotech-s4-1', 'Molecular Biology', '🧬', [
+        { title: 'Unit 1: Gene Expression', topics: ['DNA Replication', 'Transcription', 'Translation', 'Gene Regulation - Lac Operon', 'Eukaryotic Gene Regulation', 'RNA Processing'] },
+        { title: 'Unit 2: Molecular Techniques', topics: ['PCR', 'Gel Electrophoresis', 'Blotting Techniques', 'DNA Sequencing', 'Gene Cloning', 'CRISPR-Cas9'] },
+      ]),
+      makeSubject('biotech-s4-2', 'Genetics', '🧬', defaultUnits('genetics')),
+      makeSubject('biotech-s4-3', 'Immunology', '🛡️', defaultUnits('immunology')),
+      makeSubject('biotech-s4-4', 'Bioprocess Engineering', '🏭', defaultUnits('bioprocess')),
+      makeSubject('biotech-s4-5', 'Transport Phenomena', '🌊', defaultUnits('transport')),
+      makeSubject('biotech-s4-6', 'Biostatistics', '📊', defaultUnits('biostat')),
+    ]},
+    { id: 'biotech-sem-5', number: 5, subjects: [
+      makeSubject('biotech-s5-1', 'Genetic Engineering', '🧬', defaultUnits('gen-engg')),
+      makeSubject('biotech-s5-2', 'Bioinformatics', '💻', defaultUnits('bioinfo')),
+      makeSubject('biotech-s5-3', 'Downstream Processing', '🏭', defaultUnits('downstream')),
+      makeSubject('biotech-s5-4', 'Plant Biotechnology', '🌿', defaultUnits('plant-bio')),
+      makeSubject('biotech-s5-5', 'Enzyme Technology', '🧪', defaultUnits('enzyme')),
+    ]},
+    { id: 'biotech-sem-6', number: 6, subjects: [
+      makeSubject('biotech-s6-1', 'Animal Biotechnology', '🐾', defaultUnits('animal-bio')),
+      makeSubject('biotech-s6-2', 'Environmental Biotechnology', '🌱', defaultUnits('env-bio')),
+      makeSubject('biotech-s6-3', 'Bioprocess Control', '⚙️', defaultUnits('bioprocess-ctrl')),
+      makeSubject('biotech-s6-4', 'Pharmaceutical Biotechnology', '💊', defaultUnits('pharma-bio')),
+      makeSubject('biotech-s6-5', 'Biosafety & IPR', '📋', defaultUnits('biosafety')),
+    ]},
+    { id: 'biotech-sem-7', number: 7, subjects: [
+      makeSubject('biotech-s7-1', 'Genomics & Proteomics', '🧬', defaultUnits('genomics')),
+      makeSubject('biotech-s7-2', 'Nanobiotechnology', '🔬', defaultUnits('nanobio')),
+      makeSubject('biotech-s7-3', 'Food Biotechnology', '🍎', defaultUnits('food-bio')),
+      makeSubject('biotech-s7-4', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'biotech-sem-8', number: 8, subjects: [
+      makeSubject('biotech-s8-1', 'Stem Cell Technology', '🧫', defaultUnits('stem-cell')),
+      makeSubject('biotech-s8-2', 'Medical Biotechnology', '🏥', defaultUnits('med-bio')),
+      makeSubject('biotech-s8-3', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== B.TECH AI & ML (IPU) =====================
+const aimlBranch: Branch = {
+  id: 'aiml',
+  name: 'B.Tech AI & Machine Learning',
+  description: 'Specialize in artificial intelligence, deep learning, NLP & computer vision.',
+  image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
+  color: 'blue',
+  semesters: [
+    { id: 'aiml-sem-1', number: 1, subjects: sem1Subjects('aiml') },
+    { id: 'aiml-sem-2', number: 2, subjects: sem2Subjects('aiml') },
+    { id: 'aiml-sem-3', number: 3, subjects: [
+      makeSubject('aiml-s3-1', 'Applied Mathematics – III', '📐', defaultUnits('math3')),
+      makeSubject('aiml-s3-2', 'Data Structures & Algorithms', '🗂️', defaultUnits('dsa')),
+      makeSubject('aiml-s3-3', 'Probability & Statistics for AI', '📊', defaultUnits('prob-ai')),
+      makeSubject('aiml-s3-4', 'Object Oriented Programming', '💻', defaultUnits('oop')),
+      makeSubject('aiml-s3-5', 'Digital Logic Design', '🔧', defaultUnits('dld')),
+      makeSubject('aiml-s3-6', 'Discrete Mathematics', '🔢', defaultUnits('discrete')),
+    ]},
+    { id: 'aiml-sem-4', number: 4, subjects: [
+      makeSubject('aiml-s4-1', 'Machine Learning', '🤖', [
+        { title: 'Unit 1: Supervised Learning', topics: ['Linear Regression', 'Logistic Regression', 'Decision Trees', 'Random Forest', 'SVM', 'KNN'] },
+        { title: 'Unit 2: Unsupervised Learning', topics: ['K-Means Clustering', 'Hierarchical Clustering', 'PCA', 'Dimensionality Reduction', 'Association Rules', 'Anomaly Detection'] },
+        { title: 'Unit 3: Model Evaluation', topics: ['Cross-Validation', 'Bias-Variance Tradeoff', 'ROC & AUC', 'Ensemble Methods', 'Feature Engineering', 'Hyperparameter Tuning'] },
+      ]),
+      makeSubject('aiml-s4-2', 'Database Management Systems', '🗄️', defaultUnits('dbms')),
+      makeSubject('aiml-s4-3', 'Operating Systems', '🖥️', defaultUnits('os')),
+      makeSubject('aiml-s4-4', 'Algorithm Design', '📊', defaultUnits('algo')),
+      makeSubject('aiml-s4-5', 'Python Programming for AI', '🐍', defaultUnits('python-ai')),
+    ]},
+    { id: 'aiml-sem-5', number: 5, subjects: [
+      makeSubject('aiml-s5-1', 'Deep Learning', '🧠', [
+        { title: 'Unit 1: Neural Networks', topics: ['Perceptron', 'MLP & Backpropagation', 'Activation Functions', 'Optimization - SGD, Adam', 'Regularization - Dropout, BatchNorm', 'CNN Architecture'] },
+        { title: 'Unit 2: Advanced Architectures', topics: ['RNN & LSTM', 'GRU', 'Transformer Architecture', 'Attention Mechanism', 'GANs', 'Autoencoders'] },
+      ]),
+      makeSubject('aiml-s5-2', 'Natural Language Processing', '💬', defaultUnits('nlp')),
+      makeSubject('aiml-s5-3', 'Computer Vision', '👁️', defaultUnits('cv')),
+      makeSubject('aiml-s5-4', 'Computer Networks', '🌐', defaultUnits('cn')),
+      makeSubject('aiml-s5-5', 'Software Engineering', '🛠️', defaultUnits('se')),
+    ]},
+    { id: 'aiml-sem-6', number: 6, subjects: [
+      makeSubject('aiml-s6-1', 'Reinforcement Learning', '🎮', defaultUnits('rl')),
+      makeSubject('aiml-s6-2', 'Big Data Analytics', '📊', defaultUnits('big-data')),
+      makeSubject('aiml-s6-3', 'Cloud Computing', '☁️', defaultUnits('cloud')),
+      makeSubject('aiml-s6-4', 'Compiler Design', '⚙️', defaultUnits('compiler')),
+      makeSubject('aiml-s6-5', 'AI Ethics & Society', '📋', defaultUnits('ai-ethics')),
+    ]},
+    { id: 'aiml-sem-7', number: 7, subjects: [
+      makeSubject('aiml-s7-1', 'Generative AI', '🤖', defaultUnits('gen-ai')),
+      makeSubject('aiml-s7-2', 'Robotics & AI', '🤖', defaultUnits('robotics-ai')),
+      makeSubject('aiml-s7-3', 'Edge AI & IoT', '🌐', defaultUnits('edge-ai')),
+      makeSubject('aiml-s7-4', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'aiml-sem-8', number: 8, subjects: [
+      makeSubject('aiml-s8-1', 'Advanced Deep Learning', '🧠', defaultUnits('adv-dl')),
+      makeSubject('aiml-s8-2', 'AI in Healthcare', '🏥', defaultUnits('ai-health')),
+      makeSubject('aiml-s8-3', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== B.TECH DATA SCIENCE (IPU) =====================
+const dsBranch: Branch = {
+  id: 'ds',
+  name: 'B.Tech Data Science',
+  description: 'Master data analytics, statistical modeling, machine learning & big data technologies.',
+  image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+  color: 'blue',
+  semesters: [
+    { id: 'ds-sem-1', number: 1, subjects: sem1Subjects('ds') },
+    { id: 'ds-sem-2', number: 2, subjects: sem2Subjects('ds') },
+    { id: 'ds-sem-3', number: 3, subjects: [
+      makeSubject('ds-s3-1', 'Applied Mathematics – III', '📐', defaultUnits('math3')),
+      makeSubject('ds-s3-2', 'Data Structures', '🗂️', defaultUnits('dsa')),
+      makeSubject('ds-s3-3', 'Statistical Methods', '📊', defaultUnits('stats')),
+      makeSubject('ds-s3-4', 'Object Oriented Programming', '💻', defaultUnits('oop')),
+      makeSubject('ds-s3-5', 'Digital Logic Design', '🔧', defaultUnits('dld')),
+      makeSubject('ds-s3-6', 'Linear Algebra for Data Science', '🔢', defaultUnits('linear-algebra')),
+    ]},
+    { id: 'ds-sem-4', number: 4, subjects: [
+      makeSubject('ds-s4-1', 'Machine Learning', '🤖', defaultUnits('ml')),
+      makeSubject('ds-s4-2', 'Database Systems', '🗄️', defaultUnits('dbms')),
+      makeSubject('ds-s4-3', 'Operating Systems', '🖥️', defaultUnits('os')),
+      makeSubject('ds-s4-4', 'Algorithm Design', '📊', defaultUnits('algo')),
+      makeSubject('ds-s4-5', 'Python for Data Science', '🐍', defaultUnits('python-ds')),
+    ]},
+    { id: 'ds-sem-5', number: 5, subjects: [
+      makeSubject('ds-s5-1', 'Deep Learning', '🧠', defaultUnits('dl')),
+      makeSubject('ds-s5-2', 'Big Data Technologies', '📊', defaultUnits('big-data')),
+      makeSubject('ds-s5-3', 'Data Visualization', '📈', defaultUnits('data-viz')),
+      makeSubject('ds-s5-4', 'Computer Networks', '🌐', defaultUnits('cn')),
+      makeSubject('ds-s5-5', 'Software Engineering', '🛠️', defaultUnits('se')),
+    ]},
+    { id: 'ds-sem-6', number: 6, subjects: [
+      makeSubject('ds-s6-1', 'Natural Language Processing', '💬', defaultUnits('nlp')),
+      makeSubject('ds-s6-2', 'Cloud Computing', '☁️', defaultUnits('cloud')),
+      makeSubject('ds-s6-3', 'Time Series Analysis', '📊', defaultUnits('time-series')),
+      makeSubject('ds-s6-4', 'Data Engineering', '🔧', defaultUnits('data-engg')),
+      makeSubject('ds-s6-5', 'Business Analytics', '📋', defaultUnits('biz-analytics')),
+    ]},
+    { id: 'ds-sem-7', number: 7, subjects: [
+      makeSubject('ds-s7-1', 'Recommendation Systems', '🎯', defaultUnits('recsys')),
+      makeSubject('ds-s7-2', 'Data Privacy & Ethics', '🔒', defaultUnits('privacy')),
+      makeSubject('ds-s7-3', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'ds-sem-8', number: 8, subjects: [
+      makeSubject('ds-s8-1', 'Advanced Analytics', '📊', defaultUnits('adv-analytics')),
+      makeSubject('ds-s8-2', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== BCA (IPU - 6 Semesters) =====================
+const bcaBranch: Branch = {
+  id: 'bca',
+  name: 'BCA – Bachelor of Computer Applications',
+  description: 'Undergraduate program in computer applications, programming & IT skills.',
+  image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bca-sem-1', number: 1, subjects: [
+      makeSubject('bca-s1-1', 'Mathematics – I', '📐', defaultUnits('bca-math1')),
+      makeSubject('bca-s1-2', 'Programming in C', '💻', defaultUnits('c-prog')),
+      makeSubject('bca-s1-3', 'Computer Fundamentals', '🖥️', defaultUnits('comp-fund')),
+      makeSubject('bca-s1-4', 'Business Communication', '📝', defaultUnits('biz-comm')),
+      makeSubject('bca-s1-5', 'Digital Electronics', '🔧', defaultUnits('digital')),
+    ]},
+    { id: 'bca-sem-2', number: 2, subjects: [
+      makeSubject('bca-s2-1', 'Mathematics – II', '📐', defaultUnits('bca-math2')),
+      makeSubject('bca-s2-2', 'Data Structures using C', '🗂️', defaultUnits('ds-c')),
+      makeSubject('bca-s2-3', 'Office Automation Tools', '📋', defaultUnits('office')),
+      makeSubject('bca-s2-4', 'Organizational Behaviour', '👥', defaultUnits('ob')),
+      makeSubject('bca-s2-5', 'Operating Systems', '🖥️', defaultUnits('os')),
+    ]},
+    { id: 'bca-sem-3', number: 3, subjects: [
+      makeSubject('bca-s3-1', 'Mathematics – III', '📐', defaultUnits('bca-math3')),
+      makeSubject('bca-s3-2', 'Object Oriented Programming (C++/Java)', '💻', defaultUnits('oop')),
+      makeSubject('bca-s3-3', 'Database Management Systems', '🗄️', defaultUnits('dbms')),
+      makeSubject('bca-s3-4', 'Computer Networks', '🌐', defaultUnits('cn')),
+      makeSubject('bca-s3-5', 'Software Engineering', '🛠️', defaultUnits('se')),
+    ]},
+    { id: 'bca-sem-4', number: 4, subjects: [
+      makeSubject('bca-s4-1', 'Web Technologies', '🌐', defaultUnits('web')),
+      makeSubject('bca-s4-2', 'Java Programming', '☕', defaultUnits('java')),
+      makeSubject('bca-s4-3', 'Computer Graphics & Multimedia', '🎨', defaultUnits('graphics')),
+      makeSubject('bca-s4-4', 'System Analysis & Design', '📊', defaultUnits('sad')),
+      makeSubject('bca-s4-5', 'Environmental Science', '🌱', defaultUnits('env')),
+    ]},
+    { id: 'bca-sem-5', number: 5, subjects: [
+      makeSubject('bca-s5-1', 'Python Programming', '🐍', defaultUnits('python')),
+      makeSubject('bca-s5-2', 'Cloud Computing', '☁️', defaultUnits('cloud')),
+      makeSubject('bca-s5-3', 'E-Commerce & Cyber Security', '🔒', defaultUnits('ecomm')),
+      makeSubject('bca-s5-4', 'Artificial Intelligence', '🤖', defaultUnits('ai')),
+      makeSubject('bca-s5-5', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'bca-sem-6', number: 6, subjects: [
+      makeSubject('bca-s6-1', 'Machine Learning', '🤖', defaultUnits('ml')),
+      makeSubject('bca-s6-2', 'Mobile Application Development', '📱', defaultUnits('mobile')),
+      makeSubject('bca-s6-3', 'Data Analytics', '📊', defaultUnits('analytics')),
+      makeSubject('bca-s6-4', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== BBA (IPU - 6 Semesters) =====================
+const bbaBranch: Branch = {
+  id: 'bba',
+  name: 'BBA – Bachelor of Business Administration',
+  description: 'Develop business acumen, management skills & entrepreneurial thinking.',
+  image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bba-sem-1', number: 1, subjects: [
+      makeSubject('bba-s1-1', 'Principles of Management', '📋', defaultUnits('mgmt')),
+      makeSubject('bba-s1-2', 'Business Mathematics', '📐', defaultUnits('biz-math')),
+      makeSubject('bba-s1-3', 'Financial Accounting', '💰', defaultUnits('accounting')),
+      makeSubject('bba-s1-4', 'Business Communication', '📝', defaultUnits('biz-comm')),
+      makeSubject('bba-s1-5', 'Microeconomics', '📊', defaultUnits('micro-eco')),
+    ]},
+    { id: 'bba-sem-2', number: 2, subjects: [
+      makeSubject('bba-s2-1', 'Organizational Behaviour', '👥', defaultUnits('ob')),
+      makeSubject('bba-s2-2', 'Business Statistics', '📊', defaultUnits('biz-stats')),
+      makeSubject('bba-s2-3', 'Cost Accounting', '💰', defaultUnits('cost-acc')),
+      makeSubject('bba-s2-4', 'Macroeconomics', '📊', defaultUnits('macro-eco')),
+      makeSubject('bba-s2-5', 'IT for Business', '💻', defaultUnits('it-biz')),
+    ]},
+    { id: 'bba-sem-3', number: 3, subjects: [
+      makeSubject('bba-s3-1', 'Human Resource Management', '👥', defaultUnits('hrm')),
+      makeSubject('bba-s3-2', 'Marketing Management', '📣', defaultUnits('marketing')),
+      makeSubject('bba-s3-3', 'Financial Management', '💰', defaultUnits('fin-mgmt')),
+      makeSubject('bba-s3-4', 'Business Law', '⚖️', defaultUnits('biz-law')),
+      makeSubject('bba-s3-5', 'Operations Research', '📊', defaultUnits('or')),
+    ]},
+    { id: 'bba-sem-4', number: 4, subjects: [
+      makeSubject('bba-s4-1', 'Entrepreneurship Development', '🚀', defaultUnits('entrepreneurship')),
+      makeSubject('bba-s4-2', 'Business Research Methods', '📋', defaultUnits('research')),
+      makeSubject('bba-s4-3', 'Production & Operations Management', '🏭', defaultUnits('prod-mgmt')),
+      makeSubject('bba-s4-4', 'Corporate Tax', '💰', defaultUnits('tax')),
+      makeSubject('bba-s4-5', 'Environmental Science', '🌱', defaultUnits('env')),
+    ]},
+    { id: 'bba-sem-5', number: 5, subjects: [
+      makeSubject('bba-s5-1', 'Strategic Management', '📋', defaultUnits('strategy')),
+      makeSubject('bba-s5-2', 'International Business', '🌐', defaultUnits('intl-biz')),
+      makeSubject('bba-s5-3', 'Digital Marketing', '📱', defaultUnits('digital-mkt')),
+      makeSubject('bba-s5-4', 'Supply Chain Management', '🔗', defaultUnits('scm')),
+      makeSubject('bba-s5-5', 'Summer Internship Report', '📝', defaultUnits('internship')),
+    ]},
+    { id: 'bba-sem-6', number: 6, subjects: [
+      makeSubject('bba-s6-1', 'Corporate Governance & Ethics', '⚖️', defaultUnits('governance')),
+      makeSubject('bba-s6-2', 'Project Management', '📋', defaultUnits('proj-mgmt')),
+      makeSubject('bba-s6-3', 'E-Business', '🌐', defaultUnits('e-biz')),
+      makeSubject('bba-s6-4', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== MBA (IPU - 4 Semesters) =====================
+const mbaBranch: Branch = {
+  id: 'mba',
+  name: 'MBA – Master of Business Administration',
+  description: 'Postgraduate management program covering finance, marketing, HR & strategy.',
+  image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
+  color: 'purple',
+  semesters: [
+    { id: 'mba-sem-1', number: 1, subjects: [
+      makeSubject('mba-s1-1', 'Management Concepts & Practices', '📋', defaultUnits('mgmt-concepts')),
+      makeSubject('mba-s1-2', 'Managerial Economics', '📊', defaultUnits('managerial-eco')),
+      makeSubject('mba-s1-3', 'Financial Accounting & Analysis', '💰', defaultUnits('fin-acc')),
+      makeSubject('mba-s1-4', 'Quantitative Techniques', '📐', defaultUnits('quant')),
+      makeSubject('mba-s1-5', 'Organizational Behaviour', '👥', defaultUnits('ob')),
+      makeSubject('mba-s1-6', 'Business Communication', '📝', defaultUnits('biz-comm')),
+    ]},
+    { id: 'mba-sem-2', number: 2, subjects: [
+      makeSubject('mba-s2-1', 'Marketing Management', '📣', defaultUnits('marketing')),
+      makeSubject('mba-s2-2', 'Financial Management', '💰', defaultUnits('fin-mgmt')),
+      makeSubject('mba-s2-3', 'Human Resource Management', '👥', defaultUnits('hrm')),
+      makeSubject('mba-s2-4', 'Operations Management', '🏭', defaultUnits('ops-mgmt')),
+      makeSubject('mba-s2-5', 'Business Research Methodology', '📋', defaultUnits('brm')),
+      makeSubject('mba-s2-6', 'Information Systems Management', '💻', defaultUnits('ism')),
+    ]},
+    { id: 'mba-sem-3', number: 3, subjects: [
+      makeSubject('mba-s3-1', 'Strategic Management', '📋', defaultUnits('strategy')),
+      makeSubject('mba-s3-2', 'Business Law & Ethics', '⚖️', defaultUnits('biz-law')),
+      makeSubject('mba-s3-3', 'International Business', '🌐', defaultUnits('intl-biz')),
+      makeSubject('mba-s3-4', 'Entrepreneurship & Innovation', '🚀', defaultUnits('entrepreneurship')),
+      makeSubject('mba-s3-5', 'Elective – I', '📚', defaultUnits('elective1')),
+      makeSubject('mba-s3-6', 'Elective – II', '📚', defaultUnits('elective2')),
+    ]},
+    { id: 'mba-sem-4', number: 4, subjects: [
+      makeSubject('mba-s4-1', 'Corporate Governance', '⚖️', defaultUnits('governance')),
+      makeSubject('mba-s4-2', 'Project Planning & Analysis', '📋', defaultUnits('proj-plan')),
+      makeSubject('mba-s4-3', 'Elective – III', '📚', defaultUnits('elective3')),
+      makeSubject('mba-s4-4', 'Elective – IV', '📚', defaultUnits('elective4')),
+      makeSubject('mba-s4-5', 'Dissertation', '🎓', defaultUnits('dissertation')),
+    ]},
+  ],
+};
+
+// ===================== MCA (IPU - 4 Semesters) =====================
+const mcaBranch: Branch = {
+  id: 'mca',
+  name: 'MCA – Master of Computer Applications',
+  description: 'Postgraduate program in advanced computing, software development & IT management.',
+  image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop',
+  color: 'purple',
+  semesters: [
+    { id: 'mca-sem-1', number: 1, subjects: [
+      makeSubject('mca-s1-1', 'Mathematical Foundations', '📐', defaultUnits('math-found')),
+      makeSubject('mca-s1-2', 'Advanced Data Structures', '🗂️', defaultUnits('adv-ds')),
+      makeSubject('mca-s1-3', 'Advanced DBMS', '🗄️', defaultUnits('adv-dbms')),
+      makeSubject('mca-s1-4', 'Computer Networks', '🌐', defaultUnits('cn')),
+      makeSubject('mca-s1-5', 'Advanced Java Programming', '☕', defaultUnits('adv-java')),
+    ]},
+    { id: 'mca-sem-2', number: 2, subjects: [
+      makeSubject('mca-s2-1', 'Advanced Operating Systems', '🖥️', defaultUnits('adv-os')),
+      makeSubject('mca-s2-2', 'Software Engineering', '🛠️', defaultUnits('se')),
+      makeSubject('mca-s2-3', 'Web Technologies', '🌐', defaultUnits('web')),
+      makeSubject('mca-s2-4', 'AI & Machine Learning', '🤖', defaultUnits('ai-ml')),
+      makeSubject('mca-s2-5', 'Cloud Computing', '☁️', defaultUnits('cloud')),
+    ]},
+    { id: 'mca-sem-3', number: 3, subjects: [
+      makeSubject('mca-s3-1', 'Cyber Security', '🔒', defaultUnits('cyber-sec')),
+      makeSubject('mca-s3-2', 'Mobile Computing', '📱', defaultUnits('mobile')),
+      makeSubject('mca-s3-3', 'Big Data Analytics', '📊', defaultUnits('big-data')),
+      makeSubject('mca-s3-4', 'Elective – I', '📚', defaultUnits('elective1')),
+      makeSubject('mca-s3-5', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'mca-sem-4', number: 4, subjects: [
+      makeSubject('mca-s4-1', 'DevOps & Agile', '⚙️', defaultUnits('devops')),
+      makeSubject('mca-s4-2', 'Elective – II', '📚', defaultUnits('elective2')),
+      makeSubject('mca-s4-3', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== BA LLB (IPU - 10 Semesters) =====================
+const ballbBranch: Branch = {
+  id: 'ballb',
+  name: 'BA LLB – Integrated Law',
+  description: '5-year integrated law program combining arts & legal education under IPU.',
+  image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'ballb-sem-1', number: 1, subjects: [
+      makeSubject('ballb-s1-1', 'Legal Methods', '⚖️', defaultUnits('legal-methods')),
+      makeSubject('ballb-s1-2', 'Law of Torts', '⚖️', defaultUnits('torts')),
+      makeSubject('ballb-s1-3', 'Political Science – I', '🏛️', defaultUnits('polsci1')),
+      makeSubject('ballb-s1-4', 'English – I', '📝', defaultUnits('eng1')),
+      makeSubject('ballb-s1-5', 'History – I', '📜', defaultUnits('history1')),
+      makeSubject('ballb-s1-6', 'Economics – I', '📊', defaultUnits('eco1')),
+    ]},
+    { id: 'ballb-sem-2', number: 2, subjects: [
+      makeSubject('ballb-s2-1', 'Contract Law – I', '⚖️', defaultUnits('contract1')),
+      makeSubject('ballb-s2-2', 'Constitutional Law – I', '🏛️', [
+        { title: 'Unit 1: Indian Constitution', topics: ['Historical Background', 'Preamble', 'Fundamental Rights - Art 14-32', 'Directive Principles', 'Fundamental Duties', 'Amendment Procedure'] },
+        { title: 'Unit 2: State Machinery', topics: ['Parliament', 'State Legislature', 'Executive - President & PM', 'Judiciary - Supreme Court & High Courts', 'Federal Structure', 'Emergency Provisions'] },
+      ]),
+      makeSubject('ballb-s2-3', 'Political Science – II', '🏛️', defaultUnits('polsci2')),
+      makeSubject('ballb-s2-4', 'English – II', '📝', defaultUnits('eng2')),
+      makeSubject('ballb-s2-5', 'Sociology – I', '👥', defaultUnits('soc1')),
+    ]},
+    { id: 'ballb-sem-3', number: 3, subjects: [
+      makeSubject('ballb-s3-1', 'Contract Law – II', '⚖️', defaultUnits('contract2')),
+      makeSubject('ballb-s3-2', 'Constitutional Law – II', '🏛️', defaultUnits('const2')),
+      makeSubject('ballb-s3-3', 'Family Law – I (Hindu Law)', '👨‍👩‍👧', defaultUnits('hindu-law')),
+      makeSubject('ballb-s3-4', 'Sociology – II', '👥', defaultUnits('soc2')),
+      makeSubject('ballb-s3-5', 'History – II', '📜', defaultUnits('history2')),
+    ]},
+    { id: 'ballb-sem-4', number: 4, subjects: [
+      makeSubject('ballb-s4-1', 'Family Law – II (Muslim Law)', '⚖️', defaultUnits('muslim-law')),
+      makeSubject('ballb-s4-2', 'Property Law', '🏠', defaultUnits('property-law')),
+      makeSubject('ballb-s4-3', 'Law of Crimes – IPC', '⚖️', [
+        { title: 'Unit 1: General Principles', topics: ['Definition of Crime', 'Mens Rea', 'Actus Reus', 'Joint Liability', 'Abetment', 'Criminal Conspiracy'] },
+        { title: 'Unit 2: Specific Offences', topics: ['Offences Against Body', 'Offences Against Property', 'Defamation', 'Criminal Intimidation', 'Right of Private Defence', 'Attempt to Commit Offences'] },
+      ]),
+      makeSubject('ballb-s4-4', 'Political Science – III', '🏛️', defaultUnits('polsci3')),
+      makeSubject('ballb-s4-5', 'Economics – II', '📊', defaultUnits('eco2')),
+    ]},
+    { id: 'ballb-sem-5', number: 5, subjects: [
+      makeSubject('ballb-s5-1', 'Criminal Procedure Code', '⚖️', defaultUnits('crpc')),
+      makeSubject('ballb-s5-2', 'Civil Procedure Code', '⚖️', defaultUnits('cpc')),
+      makeSubject('ballb-s5-3', 'Law of Evidence', '⚖️', defaultUnits('evidence')),
+      makeSubject('ballb-s5-4', 'Administrative Law', '🏛️', defaultUnits('admin-law')),
+      makeSubject('ballb-s5-5', 'Political Science – IV', '🏛️', defaultUnits('polsci4')),
+    ]},
+    { id: 'ballb-sem-6', number: 6, subjects: [
+      makeSubject('ballb-s6-1', 'Company Law', '🏢', defaultUnits('company-law')),
+      makeSubject('ballb-s6-2', 'Environmental Law', '🌱', defaultUnits('env-law')),
+      makeSubject('ballb-s6-3', 'Labour Law – I', '👷', defaultUnits('labour1')),
+      makeSubject('ballb-s6-4', 'Jurisprudence', '⚖️', defaultUnits('jurisprudence')),
+      makeSubject('ballb-s6-5', 'Economics – III', '📊', defaultUnits('eco3')),
+    ]},
+    { id: 'ballb-sem-7', number: 7, subjects: [
+      makeSubject('ballb-s7-1', 'Labour Law – II', '👷', defaultUnits('labour2')),
+      makeSubject('ballb-s7-2', 'International Law', '🌐', defaultUnits('intl-law')),
+      makeSubject('ballb-s7-3', 'Intellectual Property Law', '💡', defaultUnits('ipr')),
+      makeSubject('ballb-s7-4', 'Taxation Law', '💰', defaultUnits('tax-law')),
+      makeSubject('ballb-s7-5', 'Law of Insurance', '📋', defaultUnits('insurance-law')),
+    ]},
+    { id: 'ballb-sem-8', number: 8, subjects: [
+      makeSubject('ballb-s8-1', 'Human Rights Law', '✊', defaultUnits('hr-law')),
+      makeSubject('ballb-s8-2', 'Arbitration & ADR', '⚖️', defaultUnits('adr')),
+      makeSubject('ballb-s8-3', 'Banking & Negotiable Instruments', '🏦', defaultUnits('banking-law')),
+      makeSubject('ballb-s8-4', 'Cyber Law', '🔒', defaultUnits('cyber-law')),
+      makeSubject('ballb-s8-5', 'Moot Court & Internship', '🎓', defaultUnits('moot-court')),
+    ]},
+    { id: 'ballb-sem-9', number: 9, subjects: [
+      makeSubject('ballb-s9-1', 'Competition Law', '📋', defaultUnits('competition-law')),
+      makeSubject('ballb-s9-2', 'Drafting, Pleading & Conveyancing', '📝', defaultUnits('drafting')),
+      makeSubject('ballb-s9-3', 'Professional Ethics', '⚖️', defaultUnits('ethics')),
+      makeSubject('ballb-s9-4', 'Clinical Legal Education', '🎓', defaultUnits('clinical')),
+    ]},
+    { id: 'ballb-sem-10', number: 10, subjects: [
+      makeSubject('ballb-s10-1', 'Interpretation of Statutes', '📜', defaultUnits('statute')),
+      makeSubject('ballb-s10-2', 'Women & Law', '⚖️', defaultUnits('women-law')),
+      makeSubject('ballb-s10-3', 'Dissertation & Viva', '🎓', defaultUnits('dissertation')),
+    ]},
+  ],
+};
+
+// ===================== BBA LLB (IPU - 10 Semesters) =====================
+const bballbBranch: Branch = {
+  id: 'bballb',
+  name: 'BBA LLB – Integrated Law & Management',
+  description: '5-year program integrating business administration with legal education.',
+  image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bballb-sem-1', number: 1, subjects: [
+      makeSubject('bballb-s1-1', 'Legal Methods', '⚖️', defaultUnits('legal-methods')),
+      makeSubject('bballb-s1-2', 'Law of Torts', '⚖️', defaultUnits('torts')),
+      makeSubject('bballb-s1-3', 'Principles of Management', '📋', defaultUnits('mgmt')),
+      makeSubject('bballb-s1-4', 'Business Communication', '📝', defaultUnits('biz-comm')),
+      makeSubject('bballb-s1-5', 'Financial Accounting', '💰', defaultUnits('accounting')),
+    ]},
+    { id: 'bballb-sem-2', number: 2, subjects: [
+      makeSubject('bballb-s2-1', 'Contract Law – I', '⚖️', defaultUnits('contract1')),
+      makeSubject('bballb-s2-2', 'Constitutional Law – I', '🏛️', defaultUnits('const1')),
+      makeSubject('bballb-s2-3', 'Business Economics', '📊', defaultUnits('biz-eco')),
+      makeSubject('bballb-s2-4', 'Business Statistics', '📊', defaultUnits('biz-stats')),
+      makeSubject('bballb-s2-5', 'Marketing Management', '📣', defaultUnits('marketing')),
+    ]},
+    { id: 'bballb-sem-3', number: 3, subjects: [
+      makeSubject('bballb-s3-1', 'Contract Law – II', '⚖️', defaultUnits('contract2')),
+      makeSubject('bballb-s3-2', 'Constitutional Law – II', '🏛️', defaultUnits('const2')),
+      makeSubject('bballb-s3-3', 'Family Law – I', '👨‍👩‍👧', defaultUnits('family-law1')),
+      makeSubject('bballb-s3-4', 'Financial Management', '💰', defaultUnits('fin-mgmt')),
+      makeSubject('bballb-s3-5', 'HRM', '👥', defaultUnits('hrm')),
+    ]},
+    { id: 'bballb-sem-4', number: 4, subjects: [
+      makeSubject('bballb-s4-1', 'Family Law – II', '⚖️', defaultUnits('family-law2')),
+      makeSubject('bballb-s4-2', 'Property Law', '🏠', defaultUnits('property-law')),
+      makeSubject('bballb-s4-3', 'Law of Crimes – IPC', '⚖️', defaultUnits('ipc')),
+      makeSubject('bballb-s4-4', 'Cost & Management Accounting', '💰', defaultUnits('cost-acc')),
+      makeSubject('bballb-s4-5', 'Entrepreneurship', '🚀', defaultUnits('entrepreneurship')),
+    ]},
+    { id: 'bballb-sem-5', number: 5, subjects: [
+      makeSubject('bballb-s5-1', 'CrPC', '⚖️', defaultUnits('crpc')),
+      makeSubject('bballb-s5-2', 'CPC', '⚖️', defaultUnits('cpc')),
+      makeSubject('bballb-s5-3', 'Law of Evidence', '⚖️', defaultUnits('evidence')),
+      makeSubject('bballb-s5-4', 'Administrative Law', '🏛️', defaultUnits('admin-law')),
+      makeSubject('bballb-s5-5', 'Operations Management', '🏭', defaultUnits('ops-mgmt')),
+    ]},
+    { id: 'bballb-sem-6', number: 6, subjects: [
+      makeSubject('bballb-s6-1', 'Company Law', '🏢', defaultUnits('company-law')),
+      makeSubject('bballb-s6-2', 'Environmental Law', '🌱', defaultUnits('env-law')),
+      makeSubject('bballb-s6-3', 'Labour Law – I', '👷', defaultUnits('labour1')),
+      makeSubject('bballb-s6-4', 'Jurisprudence', '⚖️', defaultUnits('jurisprudence')),
+      makeSubject('bballb-s6-5', 'Business Law & Ethics', '⚖️', defaultUnits('biz-ethics')),
+    ]},
+    { id: 'bballb-sem-7', number: 7, subjects: [
+      makeSubject('bballb-s7-1', 'Labour Law – II', '👷', defaultUnits('labour2')),
+      makeSubject('bballb-s7-2', 'International Law', '🌐', defaultUnits('intl-law')),
+      makeSubject('bballb-s7-3', 'IPR Law', '💡', defaultUnits('ipr')),
+      makeSubject('bballb-s7-4', 'Taxation Law', '💰', defaultUnits('tax-law')),
+    ]},
+    { id: 'bballb-sem-8', number: 8, subjects: [
+      makeSubject('bballb-s8-1', 'Human Rights Law', '✊', defaultUnits('hr-law')),
+      makeSubject('bballb-s8-2', 'Arbitration & ADR', '⚖️', defaultUnits('adr')),
+      makeSubject('bballb-s8-3', 'Banking Law', '🏦', defaultUnits('banking-law')),
+      makeSubject('bballb-s8-4', 'Cyber Law', '🔒', defaultUnits('cyber-law')),
+    ]},
+    { id: 'bballb-sem-9', number: 9, subjects: [
+      makeSubject('bballb-s9-1', 'Competition Law', '📋', defaultUnits('competition-law')),
+      makeSubject('bballb-s9-2', 'Drafting & Conveyancing', '📝', defaultUnits('drafting')),
+      makeSubject('bballb-s9-3', 'Professional Ethics', '⚖️', defaultUnits('ethics')),
+    ]},
+    { id: 'bballb-sem-10', number: 10, subjects: [
+      makeSubject('bballb-s10-1', 'Interpretation of Statutes', '📜', defaultUnits('statute')),
+      makeSubject('bballb-s10-2', 'Clinical Legal Education', '🎓', defaultUnits('clinical')),
+      makeSubject('bballb-s10-3', 'Dissertation', '🎓', defaultUnits('dissertation')),
+    ]},
+  ],
+};
+
+// ===================== LLB (IPU - 6 Semesters) =====================
+const llbBranch: Branch = {
+  id: 'llb',
+  name: 'LLB – Bachelor of Laws (3-Year)',
+  description: '3-year professional law degree covering all major branches of Indian law.',
+  image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'llb-sem-1', number: 1, subjects: [
+      makeSubject('llb-s1-1', 'Legal Methods & Research', '⚖️', defaultUnits('legal-methods')),
+      makeSubject('llb-s1-2', 'Law of Torts & Consumer Protection', '⚖️', defaultUnits('torts')),
+      makeSubject('llb-s1-3', 'Contract Law – I', '⚖️', defaultUnits('contract1')),
+      makeSubject('llb-s1-4', 'Constitutional Law – I', '🏛️', defaultUnits('const1')),
+      makeSubject('llb-s1-5', 'Family Law – I', '👨‍👩‍👧', defaultUnits('family-law1')),
+    ]},
+    { id: 'llb-sem-2', number: 2, subjects: [
+      makeSubject('llb-s2-1', 'Contract Law – II', '⚖️', defaultUnits('contract2')),
+      makeSubject('llb-s2-2', 'Constitutional Law – II', '🏛️', defaultUnits('const2')),
+      makeSubject('llb-s2-3', 'Family Law – II', '⚖️', defaultUnits('family-law2')),
+      makeSubject('llb-s2-4', 'Law of Crimes – IPC', '⚖️', defaultUnits('ipc')),
+      makeSubject('llb-s2-5', 'Property Law', '🏠', defaultUnits('property-law')),
+    ]},
+    { id: 'llb-sem-3', number: 3, subjects: [
+      makeSubject('llb-s3-1', 'CrPC', '⚖️', defaultUnits('crpc')),
+      makeSubject('llb-s3-2', 'CPC', '⚖️', defaultUnits('cpc')),
+      makeSubject('llb-s3-3', 'Law of Evidence', '⚖️', defaultUnits('evidence')),
+      makeSubject('llb-s3-4', 'Administrative Law', '🏛️', defaultUnits('admin-law')),
+      makeSubject('llb-s3-5', 'Jurisprudence', '⚖️', defaultUnits('jurisprudence')),
+    ]},
+    { id: 'llb-sem-4', number: 4, subjects: [
+      makeSubject('llb-s4-1', 'Company Law', '🏢', defaultUnits('company-law')),
+      makeSubject('llb-s4-2', 'Environmental Law', '🌱', defaultUnits('env-law')),
+      makeSubject('llb-s4-3', 'Labour Law – I', '👷', defaultUnits('labour1')),
+      makeSubject('llb-s4-4', 'International Law', '🌐', defaultUnits('intl-law')),
+      makeSubject('llb-s4-5', 'Taxation Law', '💰', defaultUnits('tax-law')),
+    ]},
+    { id: 'llb-sem-5', number: 5, subjects: [
+      makeSubject('llb-s5-1', 'Labour Law – II', '👷', defaultUnits('labour2')),
+      makeSubject('llb-s5-2', 'IPR Law', '💡', defaultUnits('ipr')),
+      makeSubject('llb-s5-3', 'Human Rights Law', '✊', defaultUnits('hr-law')),
+      makeSubject('llb-s5-4', 'Arbitration & ADR', '⚖️', defaultUnits('adr')),
+      makeSubject('llb-s5-5', 'Cyber Law', '🔒', defaultUnits('cyber-law')),
+    ]},
+    { id: 'llb-sem-6', number: 6, subjects: [
+      makeSubject('llb-s6-1', 'Drafting, Pleading & Conveyancing', '📝', defaultUnits('drafting')),
+      makeSubject('llb-s6-2', 'Professional Ethics', '⚖️', defaultUnits('ethics')),
+      makeSubject('llb-s6-3', 'Interpretation of Statutes', '📜', defaultUnits('statute')),
+      makeSubject('llb-s6-4', 'Moot Court & Clinical Legal Education', '🎓', defaultUnits('moot-court')),
+    ]},
+  ],
+};
+
+// ===================== B.PHARM (IPU - 8 Semesters) =====================
+const bpharmBranch: Branch = {
+  id: 'bpharm',
+  name: 'B.Pharm – Bachelor of Pharmacy',
+  description: 'Study pharmaceutical sciences, drug formulation, pharmacology & clinical pharmacy.',
+  image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bpharm-sem-1', number: 1, subjects: [
+      makeSubject('bpharm-s1-1', 'Human Anatomy & Physiology – I', '🫀', defaultUnits('anatomy1')),
+      makeSubject('bpharm-s1-2', 'Pharmaceutical Analysis – I', '🧪', defaultUnits('pharma-analysis1')),
+      makeSubject('bpharm-s1-3', 'Pharmaceutics – I', '💊', defaultUnits('pharmaceutics1')),
+      makeSubject('bpharm-s1-4', 'Pharmaceutical Inorganic Chemistry', '🧪', defaultUnits('inorganic-chem')),
+      makeSubject('bpharm-s1-5', 'Communication Skills', '📝', defaultUnits('comm-skills')),
+      makeSubject('bpharm-s1-6', 'Remedial Mathematics', '📐', defaultUnits('rem-math')),
+    ]},
+    { id: 'bpharm-sem-2', number: 2, subjects: [
+      makeSubject('bpharm-s2-1', 'Human Anatomy & Physiology – II', '🫀', defaultUnits('anatomy2')),
+      makeSubject('bpharm-s2-2', 'Pharmaceutical Organic Chemistry – I', '🧪', defaultUnits('org-chem1')),
+      makeSubject('bpharm-s2-3', 'Biochemistry', '🧬', defaultUnits('biochem')),
+      makeSubject('bpharm-s2-4', 'Pathophysiology', '🏥', defaultUnits('pathophysiology')),
+      makeSubject('bpharm-s2-5', 'Computer Applications in Pharmacy', '💻', defaultUnits('comp-pharma')),
+      makeSubject('bpharm-s2-6', 'Environmental Sciences', '🌱', defaultUnits('env')),
+    ]},
+    { id: 'bpharm-sem-3', number: 3, subjects: [
+      makeSubject('bpharm-s3-1', 'Pharmaceutical Organic Chemistry – II', '🧪', defaultUnits('org-chem2')),
+      makeSubject('bpharm-s3-2', 'Physical Pharmaceutics – I', '💊', defaultUnits('physical-pharma1')),
+      makeSubject('bpharm-s3-3', 'Pharmaceutical Microbiology', '🔬', defaultUnits('pharma-micro')),
+      makeSubject('bpharm-s3-4', 'Pharmaceutical Engineering', '🏭', defaultUnits('pharma-engg')),
+      makeSubject('bpharm-s3-5', 'Pharmaceutical Analysis – II', '🧪', defaultUnits('pharma-analysis2')),
+    ]},
+    { id: 'bpharm-sem-4', number: 4, subjects: [
+      makeSubject('bpharm-s4-1', 'Pharmaceutical Organic Chemistry – III', '🧪', defaultUnits('org-chem3')),
+      makeSubject('bpharm-s4-2', 'Medicinal Chemistry – I', '💊', defaultUnits('med-chem1')),
+      makeSubject('bpharm-s4-3', 'Physical Pharmaceutics – II', '💊', defaultUnits('physical-pharma2')),
+      makeSubject('bpharm-s4-4', 'Pharmacology – I', '💉', defaultUnits('pharmacology1')),
+      makeSubject('bpharm-s4-5', 'Pharmacognosy – I', '🌿', defaultUnits('pharmacognosy1')),
+    ]},
+    { id: 'bpharm-sem-5', number: 5, subjects: [
+      makeSubject('bpharm-s5-1', 'Medicinal Chemistry – II', '💊', defaultUnits('med-chem2')),
+      makeSubject('bpharm-s5-2', 'Industrial Pharmacy – I', '🏭', defaultUnits('ind-pharma1')),
+      makeSubject('bpharm-s5-3', 'Pharmacology – II', '💉', defaultUnits('pharmacology2')),
+      makeSubject('bpharm-s5-4', 'Pharmacognosy – II', '🌿', defaultUnits('pharmacognosy2')),
+      makeSubject('bpharm-s5-5', 'Pharmaceutical Jurisprudence', '⚖️', defaultUnits('pharma-law')),
+    ]},
+    { id: 'bpharm-sem-6', number: 6, subjects: [
+      makeSubject('bpharm-s6-1', 'Medicinal Chemistry – III', '💊', defaultUnits('med-chem3')),
+      makeSubject('bpharm-s6-2', 'Pharmacology – III', '💉', defaultUnits('pharmacology3')),
+      makeSubject('bpharm-s6-3', 'Herbal Drug Technology', '🌿', defaultUnits('herbal')),
+      makeSubject('bpharm-s6-4', 'Biopharmaceutics & Pharmacokinetics', '💊', defaultUnits('biopharma')),
+      makeSubject('bpharm-s6-5', 'Pharmaceutical Biotechnology', '🧬', defaultUnits('pharma-biotech')),
+    ]},
+    { id: 'bpharm-sem-7', number: 7, subjects: [
+      makeSubject('bpharm-s7-1', 'Industrial Pharmacy – II', '🏭', defaultUnits('ind-pharma2')),
+      makeSubject('bpharm-s7-2', 'Instrumental Methods of Analysis', '🔬', defaultUnits('instrumental')),
+      makeSubject('bpharm-s7-3', 'Pharmacy Practice', '💊', defaultUnits('pharma-practice')),
+      makeSubject('bpharm-s7-4', 'Novel Drug Delivery Systems', '💊', defaultUnits('ndds')),
+    ]},
+    { id: 'bpharm-sem-8', number: 8, subjects: [
+      makeSubject('bpharm-s8-1', 'Biostatistics & Research Methodology', '📊', defaultUnits('biostat')),
+      makeSubject('bpharm-s8-2', 'Social & Preventive Pharmacy', '🏥', defaultUnits('social-pharma')),
+      makeSubject('bpharm-s8-3', 'Pharmaceutical Regulatory Science', '📋', defaultUnits('regulatory')),
+      makeSubject('bpharm-s8-4', 'Pharmacovigilance', '💊', defaultUnits('pharmacovigilance')),
+      makeSubject('bpharm-s8-5', 'Project Work', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== BJMC (IPU - 8 Semesters) =====================
+const bjmcBranch: Branch = {
+  id: 'bjmc',
+  name: 'BJMC – Journalism & Mass Communication',
+  description: 'Study media, journalism, advertising, public relations & digital communication.',
+  image: 'https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bjmc-sem-1', number: 1, subjects: [
+      makeSubject('bjmc-s1-1', 'Introduction to Communication', '📡', defaultUnits('intro-comm')),
+      makeSubject('bjmc-s1-2', 'Print Media', '📰', defaultUnits('print-media')),
+      makeSubject('bjmc-s1-3', 'Indian Society & Culture', '🇮🇳', defaultUnits('indian-soc')),
+      makeSubject('bjmc-s1-4', 'English for Media', '📝', defaultUnits('eng-media')),
+      makeSubject('bjmc-s1-5', 'Computer Applications', '💻', defaultUnits('comp-app')),
+    ]},
+    { id: 'bjmc-sem-2', number: 2, subjects: [
+      makeSubject('bjmc-s2-1', 'Reporting & Editing', '📰', defaultUnits('reporting')),
+      makeSubject('bjmc-s2-2', 'Radio Journalism', '📻', defaultUnits('radio')),
+      makeSubject('bjmc-s2-3', 'Political Systems', '🏛️', defaultUnits('polsci')),
+      makeSubject('bjmc-s2-4', 'Hindi/Regional Language Media', '📝', defaultUnits('hindi-media')),
+      makeSubject('bjmc-s2-5', 'Photography', '📸', defaultUnits('photography')),
+    ]},
+    { id: 'bjmc-sem-3', number: 3, subjects: [
+      makeSubject('bjmc-s3-1', 'Television Journalism', '📺', defaultUnits('tv-journalism')),
+      makeSubject('bjmc-s3-2', 'Advertising', '📣', defaultUnits('advertising')),
+      makeSubject('bjmc-s3-3', 'Media Laws & Ethics', '⚖️', defaultUnits('media-law')),
+      makeSubject('bjmc-s3-4', 'Development Communication', '🌐', defaultUnits('dev-comm')),
+      makeSubject('bjmc-s3-5', 'Feature & Editorial Writing', '📝', defaultUnits('feature-writing')),
+    ]},
+    { id: 'bjmc-sem-4', number: 4, subjects: [
+      makeSubject('bjmc-s4-1', 'Public Relations', '🤝', defaultUnits('pr')),
+      makeSubject('bjmc-s4-2', 'Digital Media', '📱', defaultUnits('digital-media')),
+      makeSubject('bjmc-s4-3', 'Media Management', '📋', defaultUnits('media-mgmt')),
+      makeSubject('bjmc-s4-4', 'International Communication', '🌐', defaultUnits('intl-comm')),
+      makeSubject('bjmc-s4-5', 'Environmental Science', '🌱', defaultUnits('env')),
+    ]},
+    { id: 'bjmc-sem-5', number: 5, subjects: [
+      makeSubject('bjmc-s5-1', 'New Media & Social Media', '📱', defaultUnits('social-media')),
+      makeSubject('bjmc-s5-2', 'Film Studies', '🎬', defaultUnits('film')),
+      makeSubject('bjmc-s5-3', 'Corporate Communication', '🏢', defaultUnits('corp-comm')),
+      makeSubject('bjmc-s5-4', 'Media Research', '📋', defaultUnits('media-research')),
+    ]},
+    { id: 'bjmc-sem-6', number: 6, subjects: [
+      makeSubject('bjmc-s6-1', 'Content Creation & Storytelling', '📝', defaultUnits('content')),
+      makeSubject('bjmc-s6-2', 'Visual Communication', '🎨', defaultUnits('visual-comm')),
+      makeSubject('bjmc-s6-3', 'Event Management', '🎪', defaultUnits('events')),
+      makeSubject('bjmc-s6-4', 'Internship', '🎓', defaultUnits('internship')),
+    ]},
+    { id: 'bjmc-sem-7', number: 7, subjects: [
+      makeSubject('bjmc-s7-1', 'Data Journalism', '📊', defaultUnits('data-journalism')),
+      makeSubject('bjmc-s7-2', 'Brand Management', '📣', defaultUnits('brand-mgmt')),
+      makeSubject('bjmc-s7-3', 'Advanced TV Production', '📺', defaultUnits('adv-tv')),
+      makeSubject('bjmc-s7-4', 'Specialization Elective', '📚', defaultUnits('elective')),
+    ]},
+    { id: 'bjmc-sem-8', number: 8, subjects: [
+      makeSubject('bjmc-s8-1', 'Media Entrepreneurship', '🚀', defaultUnits('media-entre')),
+      makeSubject('bjmc-s8-2', 'Dissertation', '🎓', defaultUnits('dissertation')),
+      makeSubject('bjmc-s8-3', 'Portfolio & Viva', '🎓', defaultUnits('portfolio')),
+    ]},
+  ],
+};
+
+// ===================== BHMCT (IPU - 8 Semesters) =====================
+const bhmctBranch: Branch = {
+  id: 'bhmct',
+  name: 'BHMCT – Hotel Management & Catering',
+  description: 'Study hospitality management, food production, front office & tourism.',
+  image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bhmct-sem-1', number: 1, subjects: [
+      makeSubject('bhmct-s1-1', 'Food Production – I', '🍳', defaultUnits('food-prod1')),
+      makeSubject('bhmct-s1-2', 'Food & Beverage Service – I', '🍽️', defaultUnits('fb-service1')),
+      makeSubject('bhmct-s1-3', 'Front Office Operations – I', '🏨', defaultUnits('front-office1')),
+      makeSubject('bhmct-s1-4', 'Housekeeping – I', '🧹', defaultUnits('housekeeping1')),
+      makeSubject('bhmct-s1-5', 'Communication Skills', '📝', defaultUnits('comm-skills')),
+      makeSubject('bhmct-s1-6', 'Nutrition Science', '🥗', defaultUnits('nutrition')),
+    ]},
+    { id: 'bhmct-sem-2', number: 2, subjects: [
+      makeSubject('bhmct-s2-1', 'Food Production – II', '🍳', defaultUnits('food-prod2')),
+      makeSubject('bhmct-s2-2', 'Food & Beverage Service – II', '🍽️', defaultUnits('fb-service2')),
+      makeSubject('bhmct-s2-3', 'Front Office Operations – II', '🏨', defaultUnits('front-office2')),
+      makeSubject('bhmct-s2-4', 'Housekeeping – II', '🧹', defaultUnits('housekeeping2')),
+      makeSubject('bhmct-s2-5', 'Food Safety & Hygiene', '🧪', defaultUnits('food-safety')),
+      makeSubject('bhmct-s2-6', 'IT in Hospitality', '💻', defaultUnits('it-hospitality')),
+    ]},
+    { id: 'bhmct-sem-3', number: 3, subjects: [
+      makeSubject('bhmct-s3-1', 'Food Production – III', '🍳', defaultUnits('food-prod3')),
+      makeSubject('bhmct-s3-2', 'Food & Beverage Service – III', '🍽️', defaultUnits('fb-service3')),
+      makeSubject('bhmct-s3-3', 'Hotel Accounting', '💰', defaultUnits('hotel-acc')),
+      makeSubject('bhmct-s3-4', 'Tourism Management', '✈️', defaultUnits('tourism')),
+      makeSubject('bhmct-s3-5', 'French / German Language', '🗣️', defaultUnits('foreign-lang')),
+    ]},
+    { id: 'bhmct-sem-4', number: 4, subjects: [
+      makeSubject('bhmct-s4-1', 'Food Production – IV', '🍳', defaultUnits('food-prod4')),
+      makeSubject('bhmct-s4-2', 'Hotel Engineering', '🔧', defaultUnits('hotel-engg')),
+      makeSubject('bhmct-s4-3', 'Hospitality Marketing', '📣', defaultUnits('hosp-marketing')),
+      makeSubject('bhmct-s4-4', 'Human Resource in Hospitality', '👥', defaultUnits('hr-hosp')),
+      makeSubject('bhmct-s4-5', 'Environmental Science', '🌱', defaultUnits('env')),
+    ]},
+    { id: 'bhmct-sem-5', number: 5, subjects: [
+      makeSubject('bhmct-s5-1', 'Advanced Cuisine', '🍳', defaultUnits('adv-cuisine')),
+      makeSubject('bhmct-s5-2', 'Hospitality Law', '⚖️', defaultUnits('hosp-law')),
+      makeSubject('bhmct-s5-3', 'Financial Management', '💰', defaultUnits('fin-mgmt')),
+      makeSubject('bhmct-s5-4', 'Industrial Training', '🏨', defaultUnits('training')),
+    ]},
+    { id: 'bhmct-sem-6', number: 6, subjects: [
+      makeSubject('bhmct-s6-1', 'Bakery & Confectionery', '🍰', defaultUnits('bakery')),
+      makeSubject('bhmct-s6-2', 'Bar Management', '🍸', defaultUnits('bar-mgmt')),
+      makeSubject('bhmct-s6-3', 'Event Management', '🎪', defaultUnits('events')),
+      makeSubject('bhmct-s6-4', 'Hospitality Entrepreneurship', '🚀', defaultUnits('hosp-entre')),
+    ]},
+    { id: 'bhmct-sem-7', number: 7, subjects: [
+      makeSubject('bhmct-s7-1', 'Strategic Hotel Management', '📋', defaultUnits('strategy-hotel')),
+      makeSubject('bhmct-s7-2', 'Revenue Management', '💰', defaultUnits('revenue-mgmt')),
+      makeSubject('bhmct-s7-3', 'International Cuisine', '🌍', defaultUnits('intl-cuisine')),
+      makeSubject('bhmct-s7-4', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'bhmct-sem-8', number: 8, subjects: [
+      makeSubject('bhmct-s8-1', 'Resort & Spa Management', '🏖️', defaultUnits('resort-mgmt')),
+      makeSubject('bhmct-s8-2', 'Cruise Line Operations', '🚢', defaultUnits('cruise')),
+      makeSubject('bhmct-s8-3', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== B.COM (HONS) (IPU - 6 Semesters) =====================
+const bcomBranch: Branch = {
+  id: 'bcom',
+  name: 'B.Com (Hons) – Bachelor of Commerce',
+  description: 'Study accounting, finance, taxation, business law & economics.',
+  image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bcom-sem-1', number: 1, subjects: [
+      makeSubject('bcom-s1-1', 'Financial Accounting – I', '💰', defaultUnits('fin-acc1')),
+      makeSubject('bcom-s1-2', 'Business Organisation', '🏢', defaultUnits('biz-org')),
+      makeSubject('bcom-s1-3', 'Business Mathematics', '📐', defaultUnits('biz-math')),
+      makeSubject('bcom-s1-4', 'Microeconomics', '📊', defaultUnits('micro-eco')),
+      makeSubject('bcom-s1-5', 'English – I', '📝', defaultUnits('eng1')),
+      makeSubject('bcom-s1-6', 'Environmental Studies', '🌱', defaultUnits('env')),
+    ]},
+    { id: 'bcom-sem-2', number: 2, subjects: [
+      makeSubject('bcom-s2-1', 'Financial Accounting – II', '💰', defaultUnits('fin-acc2')),
+      makeSubject('bcom-s2-2', 'Business Law', '⚖️', defaultUnits('biz-law')),
+      makeSubject('bcom-s2-3', 'Business Statistics', '📊', defaultUnits('biz-stats')),
+      makeSubject('bcom-s2-4', 'Macroeconomics', '📊', defaultUnits('macro-eco')),
+      makeSubject('bcom-s2-5', 'English – II', '📝', defaultUnits('eng2')),
+    ]},
+    { id: 'bcom-sem-3', number: 3, subjects: [
+      makeSubject('bcom-s3-1', 'Corporate Accounting', '💰', defaultUnits('corp-acc')),
+      makeSubject('bcom-s3-2', 'Company Law', '⚖️', defaultUnits('company-law')),
+      makeSubject('bcom-s3-3', 'Cost Accounting', '💰', defaultUnits('cost-acc')),
+      makeSubject('bcom-s3-4', 'Indian Economy', '🇮🇳', defaultUnits('indian-eco')),
+      makeSubject('bcom-s3-5', 'IT for Business', '💻', defaultUnits('it-biz')),
+    ]},
+    { id: 'bcom-sem-4', number: 4, subjects: [
+      makeSubject('bcom-s4-1', 'Management Accounting', '💰', defaultUnits('mgmt-acc')),
+      makeSubject('bcom-s4-2', 'Income Tax', '💰', defaultUnits('income-tax')),
+      makeSubject('bcom-s4-3', 'Auditing', '📋', defaultUnits('auditing')),
+      makeSubject('bcom-s4-4', 'E-Commerce', '🌐', defaultUnits('ecomm')),
+      makeSubject('bcom-s4-5', 'Banking & Insurance', '🏦', defaultUnits('banking')),
+    ]},
+    { id: 'bcom-sem-5', number: 5, subjects: [
+      makeSubject('bcom-s5-1', 'Indirect Taxes – GST', '💰', defaultUnits('gst')),
+      makeSubject('bcom-s5-2', 'Financial Markets', '📈', defaultUnits('fin-markets')),
+      makeSubject('bcom-s5-3', 'Principles of Marketing', '📣', defaultUnits('marketing')),
+      makeSubject('bcom-s5-4', 'Entrepreneurship', '🚀', defaultUnits('entrepreneurship')),
+      makeSubject('bcom-s5-5', 'Summer Training Report', '📝', defaultUnits('training-report')),
+    ]},
+    { id: 'bcom-sem-6', number: 6, subjects: [
+      makeSubject('bcom-s6-1', 'Financial Management', '💰', defaultUnits('fin-mgmt')),
+      makeSubject('bcom-s6-2', 'International Business', '🌐', defaultUnits('intl-biz')),
+      makeSubject('bcom-s6-3', 'Corporate Tax Planning', '💰', defaultUnits('tax-planning')),
+      makeSubject('bcom-s6-4', 'Project Report', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== B.ED (IPU - 4 Semesters) =====================
+const bedBranch: Branch = {
+  id: 'bed',
+  name: 'B.Ed – Bachelor of Education',
+  description: 'Professional teacher training program covering pedagogy, psychology & teaching methods.',
+  image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bed-sem-1', number: 1, subjects: [
+      makeSubject('bed-s1-1', 'Childhood & Growing Up', '👶', defaultUnits('childhood')),
+      makeSubject('bed-s1-2', 'Contemporary India & Education', '🇮🇳', defaultUnits('contemp-india')),
+      makeSubject('bed-s1-3', 'Language Across Curriculum', '📝', defaultUnits('language')),
+      makeSubject('bed-s1-4', 'Understanding ICT', '💻', defaultUnits('ict')),
+      makeSubject('bed-s1-5', 'Pedagogy of Subject – I', '📚', defaultUnits('pedagogy1')),
+    ]},
+    { id: 'bed-sem-2', number: 2, subjects: [
+      makeSubject('bed-s2-1', 'Learning & Teaching', '📖', defaultUnits('learning')),
+      makeSubject('bed-s2-2', 'Assessment for Learning', '📋', defaultUnits('assessment')),
+      makeSubject('bed-s2-3', 'Knowledge & Curriculum', '📚', defaultUnits('curriculum')),
+      makeSubject('bed-s2-4', 'Pedagogy of Subject – II', '📚', defaultUnits('pedagogy2')),
+      makeSubject('bed-s2-5', 'School Internship – I', '🏫', defaultUnits('internship1')),
+    ]},
+    { id: 'bed-sem-3', number: 3, subjects: [
+      makeSubject('bed-s3-1', 'Inclusive Education', '♿', defaultUnits('inclusive')),
+      makeSubject('bed-s3-2', 'Gender, School & Society', '👥', defaultUnits('gender')),
+      makeSubject('bed-s3-3', 'Guidance & Counselling', '🤝', defaultUnits('counselling')),
+      makeSubject('bed-s3-4', 'Drama & Art in Education', '🎭', defaultUnits('drama-art')),
+      makeSubject('bed-s3-5', 'School Internship – II', '🏫', defaultUnits('internship2')),
+    ]},
+    { id: 'bed-sem-4', number: 4, subjects: [
+      makeSubject('bed-s4-1', 'Yoga & Health Education', '🧘', defaultUnits('yoga')),
+      makeSubject('bed-s4-2', 'Reading & Reflecting on Texts', '📖', defaultUnits('reading')),
+      makeSubject('bed-s4-3', 'Environmental Education', '🌱', defaultUnits('env-edu')),
+      makeSubject('bed-s4-4', 'Action Research & Project', '🎓', defaultUnits('action-research')),
+    ]},
+  ],
+};
+
+// ===================== B.TECH CSIT (IPU) =====================
+const csitBranch: Branch = {
+  id: 'csit',
+  name: 'B.Tech Computer Science & IT',
+  description: 'Combined CS & IT program covering software, networks, databases & security.',
+  image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop',
+  color: 'blue',
+  semesters: [
+    { id: 'csit-sem-1', number: 1, subjects: sem1Subjects('csit') },
+    { id: 'csit-sem-2', number: 2, subjects: sem2Subjects('csit') },
+    { id: 'csit-sem-3', number: 3, subjects: [
+      makeSubject('csit-s3-1', 'Applied Mathematics – III', '📐', defaultUnits('math3')),
+      makeSubject('csit-s3-2', 'Data Structures', '🗂️', defaultUnits('dsa')),
+      makeSubject('csit-s3-3', 'Analog Electronics', '📡', defaultUnits('analog')),
+      makeSubject('csit-s3-4', 'OOP using C++', '💻', defaultUnits('oop')),
+      makeSubject('csit-s3-5', 'Digital Logic Design', '🔧', defaultUnits('dld')),
+      makeSubject('csit-s3-6', 'Discrete Mathematics', '🔢', defaultUnits('discrete')),
+    ]},
+    { id: 'csit-sem-4', number: 4, subjects: [
+      makeSubject('csit-s4-1', 'Software Engineering', '🛠️', defaultUnits('se')),
+      makeSubject('csit-s4-2', 'Algorithm Design', '📊', defaultUnits('algo')),
+      makeSubject('csit-s4-3', 'Operating Systems', '🖥️', defaultUnits('os')),
+      makeSubject('csit-s4-4', 'Computer Architecture', '🖥️', defaultUnits('comp-arch')),
+      makeSubject('csit-s4-5', 'DBMS', '🗄️', defaultUnits('dbms')),
+      makeSubject('csit-s4-6', 'Computer Graphics', '🎨', defaultUnits('graphics')),
+    ]},
+    { id: 'csit-sem-5', number: 5, subjects: [
+      makeSubject('csit-s5-1', 'Computer Networks', '🌐', defaultUnits('cn')),
+      makeSubject('csit-s5-2', 'Theory of Computation', '🧮', defaultUnits('toc')),
+      makeSubject('csit-s5-3', 'Web Technologies', '🌐', defaultUnits('web')),
+      makeSubject('csit-s5-4', 'Java Programming', '☕', defaultUnits('java')),
+      makeSubject('csit-s5-5', 'Microprocessors', '🔧', defaultUnits('micro')),
+    ]},
+    { id: 'csit-sem-6', number: 6, subjects: [
+      makeSubject('csit-s6-1', 'Compiler Design', '⚙️', defaultUnits('compiler')),
+      makeSubject('csit-s6-2', 'Information Security', '🔒', defaultUnits('info-sec')),
+      makeSubject('csit-s6-3', 'Cloud Computing', '☁️', defaultUnits('cloud')),
+      makeSubject('csit-s6-4', 'Python Programming', '🐍', defaultUnits('python')),
+      makeSubject('csit-s6-5', 'Software Testing', '🧪', defaultUnits('testing')),
+    ]},
+    { id: 'csit-sem-7', number: 7, subjects: [
+      makeSubject('csit-s7-1', 'AI & Machine Learning', '🤖', defaultUnits('ai-ml')),
+      makeSubject('csit-s7-2', 'Big Data Analytics', '📊', defaultUnits('big-data')),
+      makeSubject('csit-s7-3', 'Mobile App Development', '📱', defaultUnits('mobile')),
+      makeSubject('csit-s7-4', 'Minor Project', '🎯', defaultUnits('minor-project')),
+    ]},
+    { id: 'csit-sem-8', number: 8, subjects: [
+      makeSubject('csit-s8-1', 'Blockchain Technology', '🔗', defaultUnits('blockchain')),
+      makeSubject('csit-s8-2', 'DevOps & CI/CD', '⚙️', defaultUnits('devops')),
+      makeSubject('csit-s8-3', 'Major Project', '🎓', defaultUnits('major-project')),
+    ]},
+  ],
+};
+
+// ===================== D.PHARM (IPU - 4 Semesters) =====================
+const dpharmBranch: Branch = {
+  id: 'dpharm',
+  name: 'D.Pharm – Diploma in Pharmacy',
+  description: 'Diploma program covering pharmaceutical sciences & dispensing pharmacy.',
+  image: 'https://images.unsplash.com/photo-1576602976047-174e57a47881?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'dpharm-sem-1', number: 1, subjects: [
+      makeSubject('dpharm-s1-1', 'Pharmaceutics – I', '💊', defaultUnits('pharmaceutics1')),
+      makeSubject('dpharm-s1-2', 'Pharmaceutical Chemistry – I', '🧪', defaultUnits('pharma-chem1')),
+      makeSubject('dpharm-s1-3', 'Pharmacognosy', '🌿', defaultUnits('pharmacognosy')),
+      makeSubject('dpharm-s1-4', 'Human Anatomy & Physiology', '🫀', defaultUnits('anatomy')),
+      makeSubject('dpharm-s1-5', 'Social Pharmacy – I', '🏥', defaultUnits('social-pharma1')),
+    ]},
+    { id: 'dpharm-sem-2', number: 2, subjects: [
+      makeSubject('dpharm-s2-1', 'Pharmaceutics – II', '💊', defaultUnits('pharmaceutics2')),
+      makeSubject('dpharm-s2-2', 'Pharmaceutical Chemistry – II', '🧪', defaultUnits('pharma-chem2')),
+      makeSubject('dpharm-s2-3', 'Pharmacology & Toxicology', '💉', defaultUnits('pharmacology')),
+      makeSubject('dpharm-s2-4', 'Biochemistry & Clinical Pathology', '🧬', defaultUnits('biochem-path')),
+      makeSubject('dpharm-s2-5', 'Social Pharmacy – II', '🏥', defaultUnits('social-pharma2')),
+      makeSubject('dpharm-s2-6', 'Hospital & Clinical Pharmacy', '🏥', defaultUnits('hospital-pharma')),
+    ]},
+  ],
+};
+
+// ===================== BPT (IPU - 8 Semesters) =====================
+const bptBranch: Branch = {
+  id: 'bpt',
+  name: 'BPT – Bachelor of Physiotherapy',
+  description: 'Study physiotherapy sciences, rehabilitation, musculoskeletal & neurological conditions.',
+  image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'bpt-sem-1', number: 1, subjects: [
+      makeSubject('bpt-s1-1', 'Human Anatomy – I', '🫀', defaultUnits('anatomy1')),
+      makeSubject('bpt-s1-2', 'Human Physiology – I', '🧬', defaultUnits('physiology1')),
+      makeSubject('bpt-s1-3', 'Biochemistry', '🧪', defaultUnits('biochem')),
+      makeSubject('bpt-s1-4', 'Biomechanics & Kinesiology', '⚙️', defaultUnits('biomech')),
+      makeSubject('bpt-s1-5', 'English & Communication', '📝', defaultUnits('eng-comm')),
+    ]},
+    { id: 'bpt-sem-2', number: 2, subjects: [
+      makeSubject('bpt-s2-1', 'Human Anatomy – II', '🫀', defaultUnits('anatomy2')),
+      makeSubject('bpt-s2-2', 'Human Physiology – II', '🧬', defaultUnits('physiology2')),
+      makeSubject('bpt-s2-3', 'Exercise Therapy', '🏋️', defaultUnits('exercise')),
+      makeSubject('bpt-s2-4', 'Electrotherapy – I', '⚡', defaultUnits('electro1')),
+      makeSubject('bpt-s2-5', 'Sociology & Psychology', '👥', defaultUnits('soc-psych')),
+    ]},
+    { id: 'bpt-sem-3', number: 3, subjects: [
+      makeSubject('bpt-s3-1', 'Pathology & Microbiology', '🔬', defaultUnits('pathology')),
+      makeSubject('bpt-s3-2', 'Pharmacology', '💊', defaultUnits('pharmacology')),
+      makeSubject('bpt-s3-3', 'Electrotherapy – II', '⚡', defaultUnits('electro2')),
+      makeSubject('bpt-s3-4', 'Musculoskeletal PT – I', '🦴', defaultUnits('msk1')),
+      makeSubject('bpt-s3-5', 'Research Methodology', '📋', defaultUnits('research')),
+    ]},
+    { id: 'bpt-sem-4', number: 4, subjects: [
+      makeSubject('bpt-s4-1', 'General Medicine & Surgery', '🏥', defaultUnits('gen-med')),
+      makeSubject('bpt-s4-2', 'Musculoskeletal PT – II', '🦴', defaultUnits('msk2')),
+      makeSubject('bpt-s4-3', 'Neurological PT – I', '🧠', defaultUnits('neuro1')),
+      makeSubject('bpt-s4-4', 'Cardiopulmonary PT', '🫀', defaultUnits('cardio-pt')),
+      makeSubject('bpt-s4-5', 'Clinical Posting', '🏥', defaultUnits('clinical')),
+    ]},
+    { id: 'bpt-sem-5', number: 5, subjects: [
+      makeSubject('bpt-s5-1', 'Neurological PT – II', '🧠', defaultUnits('neuro2')),
+      makeSubject('bpt-s5-2', 'Orthopaedic PT', '🦴', defaultUnits('ortho-pt')),
+      makeSubject('bpt-s5-3', 'Sports Physiotherapy', '⚽', defaultUnits('sports-pt')),
+      makeSubject('bpt-s5-4', 'Community Physiotherapy', '🏘️', defaultUnits('community-pt')),
+    ]},
+    { id: 'bpt-sem-6', number: 6, subjects: [
+      makeSubject('bpt-s6-1', 'Paediatric PT', '👶', defaultUnits('paeds-pt')),
+      makeSubject('bpt-s6-2', 'Obstetric & Gynaecological PT', '🤰', defaultUnits('obs-pt')),
+      makeSubject('bpt-s6-3', 'Geriatric PT', '👴', defaultUnits('geriatric-pt')),
+      makeSubject('bpt-s6-4', 'Ethics & Administration', '📋', defaultUnits('ethics-admin')),
+    ]},
+    { id: 'bpt-sem-7', number: 7, subjects: [
+      makeSubject('bpt-s7-1', 'Advanced Rehabilitation', '🏋️', defaultUnits('adv-rehab')),
+      makeSubject('bpt-s7-2', 'Ergonomics', '💺', defaultUnits('ergonomics')),
+      makeSubject('bpt-s7-3', 'Clinical Internship – I', '🏥', defaultUnits('intern1')),
+    ]},
+    { id: 'bpt-sem-8', number: 8, subjects: [
+      makeSubject('bpt-s8-1', 'Clinical Internship – II', '🏥', defaultUnits('intern2')),
+      makeSubject('bpt-s8-2', 'Dissertation', '🎓', defaultUnits('dissertation')),
+    ]},
+  ],
+};
+
+// ===================== B.ARCH (IPU - 10 Semesters) =====================
+const barchBranch: Branch = {
+  id: 'barch',
+  name: 'B.Arch – Bachelor of Architecture',
+  description: '5-year professional architecture program covering design, planning & construction.',
+  image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop',
+  color: 'emerald',
+  semesters: [
+    { id: 'barch-sem-1', number: 1, subjects: [
+      makeSubject('barch-s1-1', 'Architectural Design – I', '🏛️', defaultUnits('arch-design1')),
+      makeSubject('barch-s1-2', 'Visual Arts & Graphics', '🎨', defaultUnits('visual-arts')),
+      makeSubject('barch-s1-3', 'Building Construction – I', '🏗️', defaultUnits('building1')),
+      makeSubject('barch-s1-4', 'History of Architecture – I', '📜', defaultUnits('arch-history1')),
+      makeSubject('barch-s1-5', 'Mathematics for Architects', '📐', defaultUnits('arch-math')),
+    ]},
+    { id: 'barch-sem-2', number: 2, subjects: [
+      makeSubject('barch-s2-1', 'Architectural Design – II', '🏛️', defaultUnits('arch-design2')),
+      makeSubject('barch-s2-2', 'Building Construction – II', '🏗️', defaultUnits('building2')),
+      makeSubject('barch-s2-3', 'Structural Mechanics', '⚙️', defaultUnits('struct-mech')),
+      makeSubject('barch-s2-4', 'History of Architecture – II', '📜', defaultUnits('arch-history2')),
+      makeSubject('barch-s2-5', 'Computer Applications', '💻', defaultUnits('comp-app')),
+    ]},
+    { id: 'barch-sem-3', number: 3, subjects: [
+      makeSubject('barch-s3-1', 'Architectural Design – III', '🏛️', defaultUnits('arch-design3')),
+      makeSubject('barch-s3-2', 'Building Construction – III', '🏗️', defaultUnits('building3')),
+      makeSubject('barch-s3-3', 'Building Services – I', '🔧', defaultUnits('services1')),
+      makeSubject('barch-s3-4', 'Climatology', '🌤️', defaultUnits('climatology')),
+      makeSubject('barch-s3-5', 'Surveying', '📐', defaultUnits('surveying')),
+    ]},
+    { id: 'barch-sem-4', number: 4, subjects: [
+      makeSubject('barch-s4-1', 'Architectural Design – IV', '🏛️', defaultUnits('arch-design4')),
+      makeSubject('barch-s4-2', 'Building Construction – IV', '🏗️', defaultUnits('building4')),
+      makeSubject('barch-s4-3', 'Building Services – II', '🔧', defaultUnits('services2')),
+      makeSubject('barch-s4-4', 'Interior Design', '🛋️', defaultUnits('interior')),
+      makeSubject('barch-s4-5', 'Landscape Architecture', '🌳', defaultUnits('landscape')),
+    ]},
+    { id: 'barch-sem-5', number: 5, subjects: [
+      makeSubject('barch-s5-1', 'Architectural Design – V', '🏛️', defaultUnits('arch-design5')),
+      makeSubject('barch-s5-2', 'Town Planning – I', '🏙️', defaultUnits('town-plan1')),
+      makeSubject('barch-s5-3', 'Specification & Estimation', '📋', defaultUnits('estimation')),
+      makeSubject('barch-s5-4', 'Sustainable Architecture', '🌱', defaultUnits('sustainable')),
+    ]},
+    { id: 'barch-sem-6', number: 6, subjects: [
+      makeSubject('barch-s6-1', 'Architectural Design – VI', '🏛️', defaultUnits('arch-design6')),
+      makeSubject('barch-s6-2', 'Town Planning – II', '🏙️', defaultUnits('town-plan2')),
+      makeSubject('barch-s6-3', 'Quantity Surveying', '📋', defaultUnits('qty-survey')),
+      makeSubject('barch-s6-4', 'Professional Practice', '📋', defaultUnits('prof-practice')),
+    ]},
+    { id: 'barch-sem-7', number: 7, subjects: [
+      makeSubject('barch-s7-1', 'Architectural Design – VII', '🏛️', defaultUnits('arch-design7')),
+      makeSubject('barch-s7-2', 'Housing', '🏠', defaultUnits('housing')),
+      makeSubject('barch-s7-3', 'Advanced Construction', '🏗️', defaultUnits('adv-const')),
+    ]},
+    { id: 'barch-sem-8', number: 8, subjects: [
+      makeSubject('barch-s8-1', 'Architectural Design – VIII', '🏛️', defaultUnits('arch-design8')),
+      makeSubject('barch-s8-2', 'Urban Design', '🏙️', defaultUnits('urban-design')),
+      makeSubject('barch-s8-3', 'Research Seminar', '📋', defaultUnits('research-sem')),
+    ]},
+    { id: 'barch-sem-9', number: 9, subjects: [
+      makeSubject('barch-s9-1', 'Practical Training', '🏗️', defaultUnits('training')),
+      makeSubject('barch-s9-2', 'Design Thesis Preparation', '📋', defaultUnits('thesis-prep')),
+    ]},
+    { id: 'barch-sem-10', number: 10, subjects: [
+      makeSubject('barch-s10-1', 'Design Thesis', '🎓', defaultUnits('thesis')),
+      makeSubject('barch-s10-2', 'Thesis Viva', '🎓', defaultUnits('viva')),
+    ]},
+  ],
+};
+
+// B.Tech on top, then other degrees
+export const branches: Branch[] = [
+  // B.Tech Programs (top priority)
+  csBranch, itBranch, eceBranch, eeeBranch, mechBranch, eeBranch, civilBranch,
+  biotechBranch, aimlBranch, dsBranch, csitBranch,
+  // Other UG Programs
+  bcaBranch, bbaBranch, bcomBranch, bjmcBranch, bhmctBranch, bptBranch, bpharmBranch, dpharmBranch, barchBranch, bedBranch,
+  // Law Programs
+  ballbBranch, bballbBranch, llbBranch,
+  // PG Programs
+  mbaBranch, mcaBranch,
+];
 
 export function findBranch(id: string) { return branches.find(b => b.id === id); }
 export function findSemester(id: string) {

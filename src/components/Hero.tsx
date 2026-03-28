@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 export function Hero() {
-  const [isMuted, setIsMuted] = useState(true)
+  const [isMuted, setIsMuted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -20,9 +20,9 @@ export function Hero() {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.volume = 0
-      videoRef.current.muted = true
-      videoRef.current.defaultMuted = true
+      videoRef.current.volume = 0.7
+      videoRef.current.muted = false
+      videoRef.current.defaultMuted = false
       videoRef.current.addEventListener('play', () => {
         if (videoRef.current) {
           videoRef.current.muted = isMuted

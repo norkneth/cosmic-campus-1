@@ -4,7 +4,7 @@ export function Team() {
   const educators = [
     { name: "focneth", role: "Founder", bio: "Visionary leader behind Cosmic Campus. Architecting the future of digital education.", rotation: 'rotate-3' },
     { name: "nam.neth", role: "Co-Founder & CEO", bio: "Driving strategy, growth, and partnerships. Building bridges between technology and learning.", rotation: 'rotate-2' },
-    { name: "vel.neth", role: "Chief Executive Officer", bio: "Overseeing operations and ensuring every student gets a world-class learning experience.", rotation: '-rotate-2' },
+    { name: "vel.neth", role: "Chief Operating Officer", bio: "Overseeing operations and ensuring every student gets a world-class learning experience.", rotation: '-rotate-2' },
     { name: "hike.neth", role: "Chief Technology Officer & Content Strategist", bio: "Leading tech innovation and curating structured academic content for maximum impact.", rotation: 'rotate-1' },
   ]
 

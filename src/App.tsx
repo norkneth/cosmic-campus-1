@@ -24,6 +24,7 @@ import SearchPage from './pages/SearchPage'
 import CGPACalculator from './pages/CGPACalculator'
 import SGPACalculator from './pages/SGPACalculator'
 import BunkCalculator from './pages/BunkCalculator'
+import ExamModePage from './pages/ExamModePage'
 
 function HomePage() {
   return (
@@ -52,7 +53,6 @@ function HomePage() {
         </section>
       </main>
       <Footer />
-      <FloatingCalculators />
     </div>
   )
 }
@@ -74,13 +74,15 @@ function AnimatedRoutes() {
         <Route path="/cgpa-calculator" element={<PageTransition><CGPACalculator /></PageTransition>} />
         <Route path="/sgpa-calculator" element={<PageTransition><SGPACalculator /></PageTransition>} />
         <Route path="/bunk-calculator" element={<PageTransition><BunkCalculator /></PageTransition>} />
+        <Route path="/exam-mode" element={<PageTransition><ExamModePage /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   )
 }
 
 export default function App() {
-  const hasSeenSplash = sessionStorage.getItem('cc-splash-seen') === 'true'
+  // Always show splash on every reload
+  const hasSeenSplash = false
   const hasSelectedType = !!localStorage.getItem('cc-student-type')
 
   const [showSplash, setShowSplash] = useState(!hasSeenSplash)
@@ -104,7 +106,12 @@ export default function App() {
         {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
         {showTypeSelector && <StudentTypeSelector onSelect={handleTypeSelected} />}
       </AnimatePresence>
-      {!showSplash && !showTypeSelector && <AnimatedRoutes />}
+      {!showSplash && !showTypeSelector && (
+        <>
+          <AnimatedRoutes />
+          <FloatingCalculators />
+        </>
+      )}
     </BrowserRouter>
   )
 }

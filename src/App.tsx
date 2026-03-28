@@ -52,7 +52,6 @@ function HomePage() {
         </section>
       </main>
       <Footer />
-      <FloatingCalculators />
     </div>
   )
 }

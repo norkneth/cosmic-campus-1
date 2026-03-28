@@ -20,9 +20,9 @@ export function Hero() {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.volume = 0
-      videoRef.current.muted = true
-      videoRef.current.defaultMuted = true
+      videoRef.current.volume = 0.7
+      videoRef.current.muted = false
+      videoRef.current.defaultMuted = false
       videoRef.current.addEventListener('play', () => {
         if (videoRef.current) {
           videoRef.current.muted = isMuted

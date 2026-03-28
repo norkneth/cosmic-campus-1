@@ -80,7 +80,8 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const hasSeenSplash = sessionStorage.getItem('cc-splash-seen') === 'true'
+  // Always show splash on every reload
+  const hasSeenSplash = false
   const hasSelectedType = !!localStorage.getItem('cc-student-type')
 
   const [showSplash, setShowSplash] = useState(!hasSeenSplash)

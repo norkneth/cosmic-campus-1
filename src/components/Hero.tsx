@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 export function Hero() {
-  const [isMuted, setIsMuted] = useState(true)
+  const [isMuted, setIsMuted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)

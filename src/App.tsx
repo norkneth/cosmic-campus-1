@@ -24,6 +24,7 @@ import SearchPage from './pages/SearchPage'
 import CGPACalculator from './pages/CGPACalculator'
 import SGPACalculator from './pages/SGPACalculator'
 import BunkCalculator from './pages/BunkCalculator'
+import ExamModePage from './pages/ExamModePage'
 
 function HomePage() {
   return (

@@ -105,7 +105,12 @@ export default function App() {
         {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
         {showTypeSelector && <StudentTypeSelector onSelect={handleTypeSelected} />}
       </AnimatePresence>
-      {!showSplash && !showTypeSelector && <AnimatedRoutes />}
+      {!showSplash && !showTypeSelector && (
+        <>
+          <AnimatedRoutes />
+          <FloatingCalculators />
+        </>
+      )}
     </BrowserRouter>
   )
 }

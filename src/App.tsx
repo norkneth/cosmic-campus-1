@@ -74,6 +74,7 @@ function AnimatedRoutes() {
         <Route path="/cgpa-calculator" element={<PageTransition><CGPACalculator /></PageTransition>} />
         <Route path="/sgpa-calculator" element={<PageTransition><SGPACalculator /></PageTransition>} />
         <Route path="/bunk-calculator" element={<PageTransition><BunkCalculator /></PageTransition>} />
+        <Route path="/exam-mode" element={<PageTransition><ExamModePage /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   )
